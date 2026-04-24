@@ -75,7 +75,6 @@ const App = () => {
         <Process />
         <CaseStudies />
         <Metrics />
-        <Team />
         <Manifesto />
         <Contact />
       </main>

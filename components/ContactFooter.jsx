@@ -59,7 +59,7 @@ const Contact = () => {
             </div>
             <div style={{ marginBottom: 28 }}>
               <div className="mono" style={{ marginBottom: 8, color: 'var(--titanium-3)' }}>CALL</div>
-              <div style={{ color: 'var(--titanium-hi)', fontSize: 18 }}>+82 2 6951 0422</div>
+              <div style={{ color: 'var(--titanium-hi)', fontSize: 18 }}>+20 1092720768</div>
             </div>
             <div style={{ marginBottom: 28 }}>
               <div className="mono" style={{ marginBottom: 8, color: 'var(--titanium-3)' }}>ATELIER</div>
@@ -286,7 +286,7 @@ const Footer = () => {
 
           {[
             ['PRACTICE', [['Services','#services'],['Process','#process'],['Casework','#work'],['Manifesto','#manifesto']]],
-            ['COMPANY', [['Team','#team'],['Careers','#'],['Press','#'],['Contact','#contact']]],
+            ['COMPANY', [['Careers','#'],['Press','#'],['Contact','#contact']]],
             ['RESOURCES', [['Engineering log','#'],['Blueprints','#'],['Glossary','#'],['Reading list','#']]],
             ['LEGAL', [['MSA template','#'],['Security','#'],['Privacy','#'],['Terms','#']]],
           ].map(([head, items]) => (

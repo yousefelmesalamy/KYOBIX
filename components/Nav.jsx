@@ -59,7 +59,6 @@ const Nav = () => {
               ['Process', '#process'],
               ['Work', '#work'],
               ['Manifesto', '#manifesto'],
-              ['Team', '#team'],
             ].map(([label, href]) => (
               <a key={href} href={href} className="mono" style={{
                 fontSize: 11,
@@ -137,7 +136,6 @@ const Nav = () => {
             ['Process', '#process'],
             ['Work', '#work'],
             ['Manifesto', '#manifesto'],
-            ['Team', '#team'],
           ].map(([label, href]) => (
             <a key={href} href={href}
               onClick={() => setMenuOpen(false)}
