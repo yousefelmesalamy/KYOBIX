@@ -33,6 +33,7 @@ const SERVICES = [
 
 const Services = () => {
   const [active, setActive] = React.useState(0);
+  const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
 
   return (
     <section id="services" className="section">
@@ -57,21 +58,41 @@ const Services = () => {
         <div style={{ borderTop: '1px solid var(--line-2)' }}>
           {SERVICES.map((s, i) => {
             const isActive = active === i;
-            return (
-              <div
-                key={s.id}
-                onMouseEnter={() => setActive(i)}
-                style={{
-                  borderBottom: '1px solid var(--line-2)',
+            const rowStyle = isMobile
+              ? {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 10,
+                  padding: isActive ? '28px 0' : '20px 0',
+                }
+              : isTablet
+              ? {
+                  display: 'grid',
+                  gridTemplateColumns: '48px 1fr 140px',
+                  gap: 20,
+                  alignItems: 'start',
+                  padding: isActive ? '36px 0' : '24px 0',
+                }
+              : {
                   display: 'grid',
                   gridTemplateColumns: '80px 1fr 1.4fr 180px',
                   gap: 32,
                   alignItems: 'start',
                   padding: isActive ? '40px 0' : '28px 0',
+                };
+
+            return (
+              <div
+                key={s.id}
+                onMouseEnter={() => setActive(i)}
+                onClick={() => setActive(i)}
+                style={{
+                  borderBottom: '1px solid var(--line-2)',
                   cursor: 'pointer',
                   transition: 'padding 300ms ease, background 300ms ease',
                   background: isActive ? 'linear-gradient(to right, rgba(42,83,255,0.03), transparent 60%)' : 'transparent',
                   position: 'relative',
+                  ...rowStyle,
                 }}
               >
                 {/* Active indicator */}
@@ -86,38 +107,44 @@ const Services = () => {
                 <div className="mono" style={{
                   color: isActive ? 'var(--cobalt)' : 'var(--titanium-3)',
                   fontSize: 12,
-                  paddingLeft: 16,
+                  paddingLeft: isMobile ? 16 : 16,
                   transition: 'color 200ms',
                 }}>
                   {s.id}
                 </div>
 
                 <h3 className="display" style={{
-                  fontSize: 28,
+                  fontSize: isMobile ? 22 : 28,
                   fontWeight: 500,
                   color: isActive ? 'var(--titanium-hi)' : 'var(--titanium)',
                   transition: 'color 200ms',
+                  paddingLeft: isMobile ? 16 : 0,
                 }}>
                   {s.title}
                 </h3>
 
-                <p style={{
-                  fontSize: 15,
-                  color: 'var(--titanium-2)',
-                  maxHeight: isActive ? 120 : 0,
-                  overflow: 'hidden',
-                  opacity: isActive ? 1 : 0,
-                  transition: 'max-height 300ms ease, opacity 200ms ease',
-                }}>
-                  {s.desc}
-                </p>
+                {/* Description: on tablet it's hidden (col 3 absent), on mobile shown below when active */}
+                {!isTablet && (
+                  <p style={{
+                    fontSize: 15,
+                    color: 'var(--titanium-2)',
+                    maxHeight: isActive ? 120 : 0,
+                    overflow: 'hidden',
+                    opacity: isActive ? 1 : 0,
+                    transition: 'max-height 300ms ease, opacity 200ms ease',
+                    paddingLeft: isMobile ? 16 : 0,
+                  }}>
+                    {s.desc}
+                  </p>
+                )}
 
                 <div style={{
                   display: 'flex',
                   flexWrap: 'wrap',
                   gap: 6,
-                  justifyContent: 'flex-end',
+                  justifyContent: isMobile ? 'flex-start' : isTablet ? 'flex-end' : 'flex-end',
                   alignItems: 'flex-start',
+                  paddingLeft: isMobile ? 16 : 0,
                 }}>
                   {s.tags.map(t => (
                     <span key={t} className="mono" style={{

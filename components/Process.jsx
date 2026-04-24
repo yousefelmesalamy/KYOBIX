@@ -43,6 +43,7 @@ const PROCESS_PHASES = [
 
 const Process = () => {
   const [hovered, setHovered] = React.useState(2);
+  const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
 
   return (
     <section id="process" className="section" style={{ background: 'var(--graphite)' }}>
@@ -63,38 +64,48 @@ const Process = () => {
 
         {/* Timeline rail */}
         <div style={{ position: 'relative', marginBottom: 40 }}>
-          <div style={{
-            position: 'absolute',
-            top: 28, left: 0, right: 0, height: 1,
-            background: 'var(--line-2)',
-          }} />
+          {/* Horizontal rail — hidden on mobile */}
+          {!isMobile && (
+            <div style={{
+              position: 'absolute',
+              top: 28, left: 0, right: 0, height: 1,
+              background: 'var(--line-2)',
+            }} />
+          )}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(5, 1fr)',
-            gap: 8,
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(5, 1fr)',
+            gap: isMobile ? 0 : 8,
             position: 'relative',
           }}>
             {PROCESS_PHASES.map((p, i) => (
               <button
                 key={p.id}
                 onMouseEnter={() => setHovered(i)}
+                onClick={() => setHovered(i)}
                 onFocus={() => setHovered(i)}
                 style={{
                   textAlign: 'left',
-                  padding: '0 4px',
+                  padding: isMobile ? '16px 16px 16px 20px' : '0 4px',
                   position: 'relative',
                   cursor: 'pointer',
+                  borderBottom: isMobile ? '1px solid var(--line)' : 'none',
+                  borderLeft: isMobile ? `2px solid ${hovered === i ? 'var(--cobalt)' : 'transparent'}` : 'none',
+                  background: isMobile && hovered === i ? 'rgba(42,83,255,0.04)' : 'transparent',
+                  transition: 'all 200ms',
                 }}
               >
-                <div style={{
-                  width: 14, height: 14,
-                  background: hovered === i ? 'var(--cobalt)' : 'var(--ink)',
-                  border: `2px solid ${hovered === i ? 'var(--cobalt)' : 'var(--titanium-3)'}`,
-                  marginLeft: 0,
-                  marginBottom: 18,
-                  transform: 'rotate(45deg)',
-                  transition: 'all 200ms',
-                }} />
+                {!isMobile && (
+                  <div style={{
+                    width: 14, height: 14,
+                    background: hovered === i ? 'var(--cobalt)' : 'var(--ink)',
+                    border: `2px solid ${hovered === i ? 'var(--cobalt)' : 'var(--titanium-3)'}`,
+                    marginLeft: 0,
+                    marginBottom: 18,
+                    transform: 'rotate(45deg)',
+                    transition: 'all 200ms',
+                  }} />
+                )}
                 <div className="mono" style={{
                   fontSize: 10,
                   color: hovered === i ? 'var(--cobalt)' : 'var(--titanium-3)',
@@ -104,7 +115,7 @@ const Process = () => {
                   PHASE {p.id} · {p.duration}
                 </div>
                 <div className="display" style={{
-                  fontSize: 22,
+                  fontSize: isMobile ? 18 : 22,
                   fontWeight: 500,
                   color: hovered === i ? 'var(--titanium-hi)' : 'var(--titanium-2)',
                   letterSpacing: '-0.02em',
@@ -123,12 +134,12 @@ const Process = () => {
         {/* Detail card */}
         <div className="framed" style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 2fr 1fr',
-          gap: 48,
-          padding: 40,
+          gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr 2fr' : '1fr 2fr 1fr',
+          gap: isMobile ? 24 : isTablet ? 32 : 48,
+          padding: isMobile ? 24 : 40,
           background: 'var(--graphite-2)',
           border: '1px solid var(--line-2)',
-          minHeight: 240,
+          minHeight: isMobile ? 'auto' : 240,
         }}>
           <span className="tick-tr" />
           <span className="tick-bl" />
@@ -136,7 +147,7 @@ const Process = () => {
             <div className="mono" style={{ marginBottom: 10, color: 'var(--cobalt)' }}>
               PHASE {PROCESS_PHASES[hovered].id}
             </div>
-            <div className="display" style={{ fontSize: 40, fontWeight: 500, color: 'var(--titanium-hi)' }}>
+            <div className="display" style={{ fontSize: isMobile ? 28 : 40, fontWeight: 500, color: 'var(--titanium-hi)' }}>
               {PROCESS_PHASES[hovered].name}
             </div>
             <div className="mono" style={{ marginTop: 10, color: 'var(--titanium-2)' }}>
@@ -145,11 +156,12 @@ const Process = () => {
           </div>
           <div>
             <div className="mono" style={{ marginBottom: 14, color: 'var(--titanium-3)' }}>DESCRIPTION</div>
-            <p style={{ fontSize: 17, color: 'var(--titanium-hi)', lineHeight: 1.55 }}>
+            <p style={{ fontSize: isMobile ? 15 : 17, color: 'var(--titanium-hi)', lineHeight: 1.55 }}>
               {PROCESS_PHASES[hovered].desc}
             </p>
           </div>
-          <div>
+          {/* Deliverables — full-width on tablet, third col on desktop */}
+          <div style={isTablet ? { gridColumn: '1 / -1' } : {}}>
             <div className="mono" style={{ marginBottom: 14, color: 'var(--titanium-3)' }}>DELIVERABLES</div>
             <p style={{ fontSize: 15, color: 'var(--titanium)' }}>
               {PROCESS_PHASES[hovered].output}

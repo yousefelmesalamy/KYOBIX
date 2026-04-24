@@ -30,14 +30,14 @@ const useCounter = (target, duration = 1600, start = 0) => {
   return [v, ref];
 };
 
-const Metric = ({ label, value, suffix, prefix, decimals = 0, note }) => {
+const Metric = ({ label, value, suffix, prefix, decimals = 0, note, compact }) => {
   const [v, ref] = useCounter(value);
   const display = prefix ? `${prefix}${v.toFixed(decimals)}` : v.toFixed(decimals);
   return (
-    <div ref={ref} style={{ padding: '40px 32px', position: 'relative' }}>
+    <div ref={ref} style={{ padding: compact ? '28px 20px' : '40px 32px', position: 'relative' }}>
       <div className="mono" style={{ color: 'var(--titanium-3)', marginBottom: 16 }}>{label}</div>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
-        <div className="display" style={{ fontSize: 72, fontWeight: 500, color: 'var(--titanium-hi)', letterSpacing: '-0.04em', lineHeight: 0.95 }}>
+        <div className="display" style={{ fontSize: compact ? 48 : 72, fontWeight: 500, color: 'var(--titanium-hi)', letterSpacing: '-0.04em', lineHeight: 0.95 }}>
           {display}
         </div>
         <div className="mono" style={{ color: 'var(--cobalt)', fontSize: 14 }}>{suffix}</div>
@@ -47,39 +47,51 @@ const Metric = ({ label, value, suffix, prefix, decimals = 0, note }) => {
   );
 };
 
-const Metrics = () => (
-  <section className="section" style={{ borderTop: '1px solid var(--line)' }}>
-    <div className="container">
-      <div className="section-head">
-        <div className="eyebrow">§ 04 / PROOF</div>
-        <div>
-          <h2 className="display h2">
-            Measured<br />output.
-          </h2>
-        </div>
-      </div>
+const Metrics = () => {
+  const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
+  const compact = isMobile || isTablet;
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        border: '1px solid var(--line-2)',
-      }}>
-        <div style={{ borderRight: '1px solid var(--line-2)' }}>
-          <Metric label="SYSTEMS SHIPPED" value={23} suffix="+" note="Across fintech, retail, logistics." />
+  const cols = isMobile ? 1 : isTablet ? 2 : 4;
+
+  return (
+    <section className="section" style={{ borderTop: '1px solid var(--line)' }}>
+      <div className="container">
+        <div className="section-head">
+          <div className="eyebrow">§ 04 / PROOF</div>
+          <div>
+            <h2 className="display h2">
+              Measured<br />output.
+            </h2>
+          </div>
         </div>
-        <div style={{ borderRight: '1px solid var(--line-2)' }}>
-          <Metric label="MEDIAN P95 LOAD" value={0.42} decimals={2} suffix="s" note="Below industry benchmark by 3.1×." />
-        </div>
-        <div style={{ borderRight: '1px solid var(--line-2)' }}>
-          <Metric label="UPTIME SLA MET" value={99.98} decimals={2} suffix="%" note="Rolling 12-month average." />
-        </div>
-        <div>
-          <Metric label="CLIENT RETENTION" value={100} suffix="%" note="Every engagement renewed or expanded." />
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${cols}, 1fr)`,
+          border: '1px solid var(--line-2)',
+        }}>
+          {[
+            { label: 'SYSTEMS SHIPPED', value: 23, suffix: '+', note: 'Across fintech, retail, logistics.' },
+            { label: 'MEDIAN P95 LOAD', value: 0.42, decimals: 2, suffix: 's', note: 'Below industry benchmark by 3.1×.' },
+            { label: 'UPTIME SLA MET', value: 99.98, decimals: 2, suffix: '%', note: 'Rolling 12-month average.' },
+            { label: 'CLIENT RETENTION', value: 100, suffix: '%', note: 'Every engagement renewed or expanded.' },
+          ].map((m, i) => {
+            const isLastInRow = cols === 4 ? i === 3 : cols === 2 ? i % 2 === 1 : true;
+            const isFirstRow = cols === 2 ? i < 2 : false;
+            return (
+              <div key={m.label} style={{
+                borderRight: isLastInRow ? 'none' : '1px solid var(--line-2)',
+                borderBottom: (isMobile && i < 3) || (isTablet && isFirstRow) ? '1px solid var(--line-2)' : 'none',
+              }}>
+                <Metric {...m} compact={compact} />
+              </div>
+            );
+          })}
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 // ====== Team ======
 const TEAM = [
@@ -91,78 +103,87 @@ const TEAM = [
   { name: 'Rafael Moreno',    role: 'Data · Observability',           loc: 'MAD',  init: 'RM' },
 ];
 
-const Team = () => (
-  <section id="team" className="section" style={{ background: 'var(--graphite)' }}>
-    <div className="container">
-      <div className="section-head">
-        <div className="eyebrow">§ 05 / PRACTICE</div>
-        <div>
-          <h2 className="display h2" style={{ marginBottom: 20 }}>
-            Six engineers.<br />
-            <span style={{ color: 'var(--titanium-2)' }}>Four timezones.</span>
-          </h2>
-          <p style={{ maxWidth: 620, fontSize: 17, color: 'var(--titanium-2)' }}>
-            Small by design. Every engagement is led by a principal; there is no
-            bench, no junior resourcing, no subcontracting. What you hire is what builds.
-          </p>
+const Team = () => {
+  const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
+  const cols = isMobile ? 1 : isTablet ? 2 : 3;
+
+  return (
+    <section id="team" className="section" style={{ background: 'var(--graphite)' }}>
+      <div className="container">
+        <div className="section-head">
+          <div className="eyebrow">§ 05 / PRACTICE</div>
+          <div>
+            <h2 className="display h2" style={{ marginBottom: 20 }}>
+              Six engineers.<br />
+              <span style={{ color: 'var(--titanium-2)' }}>Four timezones.</span>
+            </h2>
+            <p style={{ maxWidth: 620, fontSize: 17, color: 'var(--titanium-2)' }}>
+              Small by design. Every engagement is led by a principal; there is no
+              bench, no junior resourcing, no subcontracting. What you hire is what builds.
+            </p>
+          </div>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${cols}, 1fr)`,
+          gap: 0,
+          border: '1px solid var(--line-2)',
+        }}>
+          {TEAM.map((p, i) => {
+            const isLastInRow = i % cols === cols - 1;
+            const isLastRow = i >= TEAM.length - cols;
+            return (
+              <div key={p.name} style={{
+                padding: isMobile ? '24px 20px' : '32px 28px',
+                borderRight: isLastInRow ? 'none' : '1px solid var(--line-2)',
+                borderBottom: isLastRow ? 'none' : '1px solid var(--line-2)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 20,
+                minHeight: isMobile ? 'auto' : 220,
+                justifyContent: 'space-between',
+                transition: 'background 200ms',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(42,83,255,0.04)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+              >
+                <div style={{
+                  width: 64, height: 64,
+                  border: '1px solid var(--line-2)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontFamily: 'var(--f-display)',
+                  fontSize: 22, fontWeight: 500,
+                  color: 'var(--titanium-hi)',
+                  letterSpacing: '-0.02em',
+                  position: 'relative',
+                }}>
+                  {p.init}
+                  <span style={{
+                    position: 'absolute', top: -1, right: -1, width: 6, height: 6,
+                    background: 'var(--cobalt)',
+                  }} />
+                </div>
+                <div>
+                  <div className="display" style={{ fontSize: 22, fontWeight: 500, color: 'var(--titanium-hi)', marginBottom: 6 }}>
+                    {p.name}
+                  </div>
+                  <div style={{ color: 'var(--titanium-2)', fontSize: 14, marginBottom: 12 }}>
+                    {p.role}
+                  </div>
+                  <div className="mono" style={{ color: 'var(--titanium-3)' }}>
+                    {p.loc} · UTC{p.loc === 'SEL' ? '+9' : p.loc === 'TYO' ? '+9' : p.loc === 'NYC' ? '−4' : p.loc === 'MAD' ? '+1' : p.loc === 'BER' ? '+1' : '+0'}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
-
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: 0,
-        border: '1px solid var(--line-2)',
-      }}>
-        {TEAM.map((p, i) => (
-          <div key={p.name} style={{
-            padding: '32px 28px',
-            borderRight: (i % 3 !== 2) ? '1px solid var(--line-2)' : 'none',
-            borderBottom: i < 3 ? '1px solid var(--line-2)' : 'none',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 20,
-            minHeight: 220,
-            justifyContent: 'space-between',
-            transition: 'background 200ms',
-            cursor: 'pointer',
-          }}
-          onMouseEnter={e => e.currentTarget.style.background = 'rgba(42,83,255,0.04)'}
-          onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-          >
-            <div style={{
-              width: 64, height: 64,
-              border: '1px solid var(--line-2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'var(--f-display)',
-              fontSize: 22, fontWeight: 500,
-              color: 'var(--titanium-hi)',
-              letterSpacing: '-0.02em',
-              position: 'relative',
-            }}>
-              {p.init}
-              <span style={{
-                position: 'absolute', top: -1, right: -1, width: 6, height: 6,
-                background: 'var(--cobalt)',
-              }} />
-            </div>
-            <div>
-              <div className="display" style={{ fontSize: 22, fontWeight: 500, color: 'var(--titanium-hi)', marginBottom: 6 }}>
-                {p.name}
-              </div>
-              <div style={{ color: 'var(--titanium-2)', fontSize: 14, marginBottom: 12 }}>
-                {p.role}
-              </div>
-              <div className="mono" style={{ color: 'var(--titanium-3)' }}>
-                {p.loc} · UTC{p.loc === 'SEL' ? '+9' : p.loc === 'TYO' ? '+9' : p.loc === 'NYC' ? '−4' : p.loc === 'MAD' ? '+1' : p.loc === 'BER' ? '+1' : '+0'}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 // ====== Manifesto ======
 const TENETS = [
@@ -173,48 +194,52 @@ const TENETS = [
   ['We own the boundary', 'between business logic and systems — that is the bridge.'],
 ];
 
-const Manifesto = () => (
-  <section id="manifesto" className="section">
-    <div className="container">
-      <div className="section-head">
-        <div className="eyebrow">§ 06 / DOCTRINE</div>
-        <div>
-          <h2 className="display h2">
-            Five<br />
-            commitments.
-          </h2>
+const Manifesto = () => {
+  const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
+
+  return (
+    <section id="manifesto" className="section">
+      <div className="container">
+        <div className="section-head">
+          <div className="eyebrow">§ 06 / DOCTRINE</div>
+          <div>
+            <h2 className="display h2">
+              Five<br />
+              commitments.
+            </h2>
+          </div>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr',
+          borderTop: '1px solid var(--line-2)',
+        }}>
+          {TENETS.map(([head, tail], i) => (
+            <div key={i} style={{
+              display: 'grid',
+              gridTemplateColumns: isMobile ? '1fr' : isTablet ? '48px 1fr 1.4fr' : '80px 1fr 1.6fr',
+              gap: isMobile ? 12 : 32,
+              padding: isMobile ? '24px 0' : '40px 0',
+              borderBottom: '1px solid var(--line-2)',
+              alignItems: 'start',
+            }}>
+              <div className="mono" style={{ color: 'var(--cobalt)', fontSize: 13 }}>
+                0{i+1} /05
+              </div>
+              <div className="display" style={{ fontSize: isMobile ? 22 : 30, fontWeight: 500, color: 'var(--titanium-hi)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+                {head}
+              </div>
+              <div style={{ fontSize: isMobile ? 15 : 18, color: 'var(--titanium-2)', lineHeight: 1.45, paddingTop: isMobile ? 0 : 6 }}>
+                {tail}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr',
-        borderTop: '1px solid var(--line-2)',
-      }}>
-        {TENETS.map(([head, tail], i) => (
-          <div key={i} style={{
-            display: 'grid',
-            gridTemplateColumns: '80px 1fr 1.6fr',
-            gap: 32,
-            padding: '40px 0',
-            borderBottom: '1px solid var(--line-2)',
-            alignItems: 'start',
-          }}>
-            <div className="mono" style={{ color: 'var(--cobalt)', fontSize: 13 }}>
-              0{i+1} /05
-            </div>
-            <div className="display" style={{ fontSize: 30, fontWeight: 500, color: 'var(--titanium-hi)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-              {head}
-            </div>
-            <div style={{ fontSize: 18, color: 'var(--titanium-2)', lineHeight: 1.45, paddingTop: 6 }}>
-              {tail}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 window.Metrics = Metrics;
 window.Team = Team;

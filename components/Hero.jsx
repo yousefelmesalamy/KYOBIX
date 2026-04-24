@@ -1,7 +1,10 @@
 const Hero = () => {
   const [coords, setCoords] = React.useState({ x: 50, y: 50 });
+  const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
 
   React.useEffect(() => {
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    if (isTouch) return;
     const onMove = (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
       const y = (e.clientY / window.innerHeight) * 100;
@@ -20,11 +23,13 @@ const Hero = () => {
       borderBottom: '1px solid var(--line)',
     }}>
       {/* Column guides */}
-      <div className="col-guides" style={{ height: '100%' }}>
-        {Array.from({length: 12}).map((_,i) => <div key={i} />)}
-      </div>
+      {!isMobile && (
+        <div className="col-guides" style={{ height: '100%' }}>
+          {Array.from({length: 12}).map((_,i) => <div key={i} />)}
+        </div>
+      )}
 
-      {/* Parallax gradient orb tied to cursor */}
+      {/* Parallax gradient orb */}
       <div style={{
         position: 'absolute',
         inset: 0,
@@ -35,26 +40,28 @@ const Hero = () => {
 
       <div className="container" style={{
         position: 'relative',
-        paddingTop: 80,
-        paddingBottom: 40,
+        paddingTop: isMobile ? 40 : 80,
+        paddingBottom: isMobile ? 32 : 40,
         minHeight: 'calc(100vh - 64px)',
         display: 'grid',
         gridTemplateRows: 'auto 1fr auto',
-        gap: 48,
+        gap: isMobile ? 32 : 48,
       }}>
         {/* Top coordinate strip */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
           <span className="mono">§ 00 / INDEX — KYOBIX.ARCHITECTURE</span>
-          <span className="mono" style={{ color: 'var(--titanium-3)' }}>
-            LAT 37.5665°N  LON 126.9780°E  ·  EST. 2026
-          </span>
+          {!isMobile && (
+            <span className="mono" style={{ color: 'var(--titanium-3)' }}>
+              LAT 37.5665°N  LON 126.9780°E  ·  EST. 2026
+            </span>
+          )}
         </div>
 
         {/* Headline + X bridge */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1.2fr 1fr',
-          gap: 48,
+          gridTemplateColumns: (isMobile || isTablet) ? '1fr' : '1.2fr 1fr',
+          gap: isMobile ? 32 : 48,
           alignItems: 'center',
         }}>
           <div>
@@ -73,7 +80,7 @@ const Hero = () => {
               </span>
             </h1>
             <p style={{
-              fontSize: 18,
+              fontSize: isMobile ? 16 : 18,
               lineHeight: 1.5,
               color: 'var(--titanium-2)',
               maxWidth: 520,
@@ -82,7 +89,7 @@ const Hero = () => {
               We architect the exact connection point where complex business logic meets
               seamless, high-performance software. Precision systems for enterprise scale.
             </p>
-            <div style={{ display: 'flex', gap: 12 }}>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <a href="#contact" className="btn btn-primary">
                 Commission a build <span className="arrow">→</span>
               </a>
@@ -92,14 +99,14 @@ const Hero = () => {
             </div>
           </div>
 
-          <XBridge />
+          {!isMobile && <XBridge />}
         </div>
 
         {/* Bottom strip */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: 32,
+          gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
+          gap: isMobile ? 20 : 32,
           paddingTop: 32,
           borderTop: '1px solid var(--line)',
         }}>

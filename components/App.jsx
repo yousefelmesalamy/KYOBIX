@@ -1,8 +1,13 @@
 const App = () => {
+  const bp = window.useBreakpoints();
+
   // Cursor
   const dotRef = React.useRef(null);
   const ringRef = React.useRef(null);
   React.useEffect(() => {
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    if (isTouch) return;
+
     let rx = 0, ry = 0, x = 0, y = 0;
     const onMove = (e) => {
       x = e.clientX; y = e.clientY;
@@ -57,10 +62,12 @@ const App = () => {
     return () => obs.disconnect();
   }, []);
 
+  const showCursor = bp.isDesktop || bp.isSmallDesktop;
+
   return (
-    <>
-      <div ref={dotRef} className="cursor-dot" />
-      <div ref={ringRef} className="cursor-ring" />
+    <window.BreakpointContext.Provider value={bp}>
+      {showCursor && <div ref={dotRef} className="cursor-dot" />}
+      {showCursor && <div ref={ringRef} className="cursor-ring" />}
       <Nav />
       <main>
         <Hero />
@@ -73,7 +80,7 @@ const App = () => {
         <Contact />
       </main>
       <Footer />
-    </>
+    </window.BreakpointContext.Provider>
   );
 };
 

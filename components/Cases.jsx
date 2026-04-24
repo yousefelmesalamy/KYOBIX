@@ -31,6 +31,7 @@ const CASES = [
 
 const CaseStudies = () => {
   const [active, setActive] = React.useState(0);
+  const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
   const c = CASES[active];
 
   return (
@@ -67,8 +68,8 @@ const CaseStudies = () => {
         {/* Case header */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 48,
+          gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr 1.2fr' : '1fr 1fr',
+          gap: isMobile ? 24 : 48,
           paddingBottom: 40,
           borderBottom: '1px solid var(--line-2)',
           marginBottom: 40,
@@ -77,10 +78,10 @@ const CaseStudies = () => {
             <div className="mono" style={{ marginBottom: 14, color: 'var(--cobalt)' }}>
               {c.id} · {c.sector}
             </div>
-            <div className="display" style={{ fontSize: 48, fontWeight: 500, color: 'var(--titanium-hi)', marginBottom: 12, letterSpacing: '-0.03em' }}>
+            <div className="display" style={{ fontSize: isMobile ? 32 : 48, fontWeight: 500, color: 'var(--titanium-hi)', marginBottom: 12, letterSpacing: '-0.03em' }}>
               {c.client}
             </div>
-            <div style={{ fontSize: 22, color: 'var(--titanium-2)', lineHeight: 1.35 }}>
+            <div style={{ fontSize: isMobile ? 18 : 22, color: 'var(--titanium-2)', lineHeight: 1.35 }}>
               {c.title}
             </div>
           </div>
@@ -105,18 +106,21 @@ const CaseStudies = () => {
         <div className="framed" style={{
           border: '1px solid var(--line-2)',
           background: 'var(--graphite)',
-          padding: 20,
+          padding: isMobile ? 12 : 20,
           position: 'relative',
         }}>
           <span className="tick-tr" />
           <span className="tick-bl" />
-          {c.kind === 'dashboard' ? <DashboardMock c={c} /> : <CommerceMock c={c} />}
+          {c.kind === 'dashboard'
+            ? <DashboardMock c={c} isMobile={isMobile} isTablet={isTablet} />
+            : <CommerceMock c={c} isMobile={isMobile} isTablet={isTablet} />
+          }
         </div>
 
         {/* Stats */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
           gap: 0,
           marginTop: 40,
           border: '1px solid var(--line-2)',
@@ -124,11 +128,12 @@ const CaseStudies = () => {
           {c.stats.map(([label, val, unit], i) => (
             <div key={i} style={{
               padding: '32px 28px',
-              borderRight: i < 2 ? '1px solid var(--line-2)' : 'none',
+              borderRight: isMobile ? 'none' : i < 2 ? '1px solid var(--line-2)' : 'none',
+              borderBottom: isMobile && i < 2 ? '1px solid var(--line-2)' : 'none',
             }}>
               <div className="mono" style={{ color: 'var(--titanium-3)', marginBottom: 12 }}>{label}</div>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                <div className="display" style={{ fontSize: 52, fontWeight: 500, color: 'var(--titanium-hi)', letterSpacing: '-0.03em' }}>
+                <div className="display" style={{ fontSize: isMobile ? 36 : 52, fontWeight: 500, color: 'var(--titanium-hi)', letterSpacing: '-0.03em' }}>
                   {val}
                 </div>
                 <div className="mono" style={{ color: 'var(--cobalt)' }}>{unit}</div>
@@ -142,7 +147,7 @@ const CaseStudies = () => {
 };
 
 // ===== Dashboard mockup =====
-const DashboardMock = ({ c }) => {
+const DashboardMock = ({ c, isMobile, isTablet }) => {
   const [tick, setTick] = React.useState(0);
   React.useEffect(() => {
     const id = setInterval(() => setTick(t => t + 1), 1600);
@@ -168,6 +173,49 @@ const DashboardMock = ({ c }) => {
   }, [lineData]);
 
   const areaPath = linePath + ` L 560 180 L 0 180 Z`;
+
+  if (isMobile) {
+    return (
+      <div style={{ fontFamily: 'var(--f-mono)', color: 'var(--titanium)', background: 'var(--ink)', border: '1px solid var(--line)' }}>
+        {/* Chrome */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', borderBottom: '1px solid var(--line)' }}>
+          <div style={{ fontSize: 10, color: 'var(--titanium-2)' }}>meridian.ops ▸ inventory ▸ live</div>
+          <div style={{ fontSize: 10, color: 'var(--ok)', display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--ok)', boxShadow: '0 0 8px var(--ok)' }} />
+            LIVE
+          </div>
+        </div>
+        {/* 2-col KPIs */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, padding: 12, marginBottom: 0 }}>
+          {[
+            ['INVENTORY', '$24.8M', 'var(--ok)'],
+            ['ON-TIME', '98.4%', 'var(--ok)'],
+            ['IN TRANSIT', '1,847 SKU', 'var(--titanium-2)'],
+            ['STOCKOUTS', '3', 'var(--danger)'],
+          ].map(([l, v, col], i) => (
+            <div key={i} style={{ border: '1px solid var(--line)', padding: 10 }}>
+              <div style={{ fontSize: 9, color: 'var(--titanium-3)', marginBottom: 6 }}>{l}</div>
+              <div style={{ fontSize: 18, color: col, fontFamily: 'var(--f-display)', fontWeight: 500 }}>{v}</div>
+            </div>
+          ))}
+        </div>
+        {/* Chart */}
+        <div style={{ border: '1px solid var(--line)', margin: 12, padding: 12 }}>
+          <div style={{ fontSize: 10, color: 'var(--titanium-hi)', marginBottom: 8 }}>THROUGHPUT · 60min rolling</div>
+          <svg viewBox="0 0 560 120" style={{ width: '100%', height: 100, display: 'block' }} preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="areaGm" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="var(--cobalt)" stopOpacity="0.35" />
+                <stop offset="100%" stopColor="var(--cobalt)" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path d={areaPath} fill="url(#areaGm)" />
+            <path d={linePath} fill="none" stroke="var(--cobalt)" strokeWidth="1.5" />
+          </svg>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{
@@ -202,39 +250,41 @@ const DashboardMock = ({ c }) => {
       </div>
 
       {/* Body */}
-      <div style={{ display: 'grid', gridTemplateColumns: '180px 1fr', minHeight: 540 }}>
-        {/* Sidebar */}
-        <div style={{
-          borderRight: '1px solid var(--line)',
-          padding: '16px 14px',
-          fontSize: 11,
-        }}>
-          {['OVERVIEW','FLEET','INVENTORY','WAREHOUSES','FORECAST','ALERTS','ACCOUNT'].map((it, i) => (
-            <div key={it} style={{
-              padding: '10px 10px',
-              marginBottom: 2,
-              color: i === 2 ? 'var(--titanium-hi)' : 'var(--titanium-2)',
-              background: i === 2 ? 'var(--graphite-2)' : 'transparent',
-              borderLeft: i === 2 ? '2px solid var(--cobalt)' : '2px solid transparent',
-              display: 'flex', justifyContent: 'space-between',
-            }}>
-              <span>{it}</span>
-              {i === 2 && <span style={{ color: 'var(--cobalt)' }}>◉</span>}
-              {i === 5 && <span style={{ color: 'var(--danger)', fontSize: 9 }}>3</span>}
+      <div style={{ display: 'grid', gridTemplateColumns: isTablet ? '1fr' : '180px 1fr', minHeight: isTablet ? 'auto' : 540 }}>
+        {/* Sidebar — hidden on tablet */}
+        {!isTablet && (
+          <div style={{
+            borderRight: '1px solid var(--line)',
+            padding: '16px 14px',
+            fontSize: 11,
+          }}>
+            {['OVERVIEW','FLEET','INVENTORY','WAREHOUSES','FORECAST','ALERTS','ACCOUNT'].map((it, i) => (
+              <div key={it} style={{
+                padding: '10px 10px',
+                marginBottom: 2,
+                color: i === 2 ? 'var(--titanium-hi)' : 'var(--titanium-2)',
+                background: i === 2 ? 'var(--graphite-2)' : 'transparent',
+                borderLeft: i === 2 ? '2px solid var(--cobalt)' : '2px solid transparent',
+                display: 'flex', justifyContent: 'space-between',
+              }}>
+                <span>{it}</span>
+                {i === 2 && <span style={{ color: 'var(--cobalt)' }}>◉</span>}
+                {i === 5 && <span style={{ color: 'var(--danger)', fontSize: 9 }}>3</span>}
+              </div>
+            ))}
+            <div style={{ marginTop: 28, padding: 10, border: '1px solid var(--line)', fontSize: 10, color: 'var(--titanium-3)' }}>
+              <div style={{ marginBottom: 6 }}>SYSTEM · NOMINAL</div>
+              <div style={{ color: 'var(--titanium-2)' }}>14 warehouses</div>
+              <div style={{ color: 'var(--titanium-2)' }}>2,412 SKUs</div>
+              <div style={{ color: 'var(--titanium-2)' }}>87 vehicles</div>
             </div>
-          ))}
-          <div style={{ marginTop: 28, padding: 10, border: '1px solid var(--line)', fontSize: 10, color: 'var(--titanium-3)' }}>
-            <div style={{ marginBottom: 6 }}>SYSTEM · NOMINAL</div>
-            <div style={{ color: 'var(--titanium-2)' }}>14 warehouses</div>
-            <div style={{ color: 'var(--titanium-2)' }}>2,412 SKUs</div>
-            <div style={{ color: 'var(--titanium-2)' }}>87 vehicles</div>
           </div>
-        </div>
+        )}
 
         {/* Main */}
         <div style={{ padding: 20 }}>
           {/* KPI row */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 20 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: 12, marginBottom: 20 }}>
             {[
               ['INVENTORY VALUE', '$24.8M', '+2.4%', 'var(--ok)'],
               ['IN TRANSIT', '1,847 SKU', '−0.2%', 'var(--titanium-2)'],
@@ -273,51 +323,42 @@ const DashboardMock = ({ c }) => {
             </svg>
           </div>
 
-          {/* Warehouse grid + Table */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 12 }}>
-            {/* Heatmap */}
-            <div style={{ border: '1px solid var(--line)', padding: 14 }}>
-              <div style={{ fontSize: 11, color: 'var(--titanium-hi)', marginBottom: 12 }}>WAREHOUSE CAPACITY</div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4 }}>
-                {Array.from({length: 14}).map((_, i) => {
-                  const v = ((Math.sin(i * 0.9 + tick * 0.3) + 1) / 2);
-                  const c = v > 0.8 ? 'var(--danger)' : v > 0.6 ? 'var(--cobalt)' : 'var(--titanium-3)';
-                  return (
-                    <div key={i} style={{
-                      aspectRatio: '1.1',
-                      background: c,
-                      opacity: 0.3 + v * 0.7,
-                      position: 'relative',
-                    }}>
-                      <span style={{
-                        position: 'absolute', top: 4, left: 4,
-                        fontSize: 8, color: 'var(--ink)', fontWeight: 600,
-                      }}>W{String(i+1).padStart(2,'0')}</span>
-                    </div>
-                  );
-                })}
+          {/* Warehouse grid + Table — hidden on tablet for space */}
+          {!isTablet && (
+            <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 12 }}>
+              <div style={{ border: '1px solid var(--line)', padding: 14 }}>
+                <div style={{ fontSize: 11, color: 'var(--titanium-hi)', marginBottom: 12 }}>WAREHOUSE CAPACITY</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4 }}>
+                  {Array.from({length: 14}).map((_, i) => {
+                    const v = ((Math.sin(i * 0.9) + 1) / 2);
+                    const col = v > 0.8 ? 'var(--danger)' : v > 0.6 ? 'var(--cobalt)' : 'var(--titanium-3)';
+                    return (
+                      <div key={i} style={{ aspectRatio: '1.1', background: col, opacity: 0.3 + v * 0.7, position: 'relative' }}>
+                        <span style={{ position: 'absolute', top: 4, left: 4, fontSize: 8, color: 'var(--ink)', fontWeight: 600 }}>
+                          W{String(i+1).padStart(2,'0')}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <div style={{ border: '1px solid var(--line)' }}>
+                <div style={{ fontSize: 11, color: 'var(--titanium-hi)', padding: '12px 14px', borderBottom: '1px solid var(--line)' }}>LIVE ALERTS</div>
+                {[
+                  ['CRITICAL', 'W07 · SKU-8820 low stock', '00:04'],
+                  ['WARN', 'Route A12 delayed 14min', '00:18'],
+                  ['WARN', 'W03 humidity above threshold', '00:42'],
+                  ['INFO', 'Reorder triggered SKU-1194', '01:03'],
+                ].map(([lv, msg, t], i) => (
+                  <div key={i} style={{ display: 'flex', padding: '9px 14px', borderBottom: i < 3 ? '1px solid var(--line)' : 'none', fontSize: 10, gap: 10 }}>
+                    <span style={{ color: lv === 'CRITICAL' ? 'var(--danger)' : lv === 'WARN' ? '#F5B949' : 'var(--titanium-2)', minWidth: 54 }}>{lv}</span>
+                    <span style={{ color: 'var(--titanium)', flex: 1 }}>{msg}</span>
+                    <span style={{ color: 'var(--titanium-3)' }}>{t}</span>
+                  </div>
+                ))}
               </div>
             </div>
-            {/* Alert table */}
-            <div style={{ border: '1px solid var(--line)' }}>
-              <div style={{ fontSize: 11, color: 'var(--titanium-hi)', padding: '12px 14px', borderBottom: '1px solid var(--line)' }}>LIVE ALERTS</div>
-              {[
-                ['CRITICAL', 'W07 · SKU-8820 low stock', '00:04'],
-                ['WARN', 'Route A12 delayed 14min', '00:18'],
-                ['WARN', 'W03 humidity above threshold', '00:42'],
-                ['INFO', 'Reorder triggered SKU-1194', '01:03'],
-              ].map(([lv, msg, t], i) => (
-                <div key={i} style={{ display: 'flex', padding: '9px 14px', borderBottom: i < 3 ? '1px solid var(--line)' : 'none', fontSize: 10, gap: 10 }}>
-                  <span style={{
-                    color: lv === 'CRITICAL' ? 'var(--danger)' : lv === 'WARN' ? '#F5B949' : 'var(--titanium-2)',
-                    minWidth: 54,
-                  }}>{lv}</span>
-                  <span style={{ color: 'var(--titanium)', flex: 1 }}>{msg}</span>
-                  <span style={{ color: 'var(--titanium-3)' }}>{t}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
@@ -325,13 +366,13 @@ const DashboardMock = ({ c }) => {
 };
 
 // ===== Commerce mockup =====
-const CommerceMock = ({ c }) => {
+const CommerceMock = ({ c, isMobile, isTablet }) => {
   return (
     <div style={{
       fontFamily: 'var(--f-body)',
       background: '#F5F2EC',
       color: '#1C1A17',
-      minHeight: 560,
+      minHeight: isMobile ? 'auto' : 560,
       position: 'relative',
     }}>
       {/* Top bar */}
@@ -339,44 +380,48 @@ const CommerceMock = ({ c }) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '18px 32px',
+        padding: isMobile ? '14px 16px' : '18px 32px',
         borderBottom: '1px solid rgba(0,0,0,0.08)',
       }}>
-        <div style={{ fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.15em' }}>FR · EUR · €</div>
+        {!isMobile && <div style={{ fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.15em' }}>FR · EUR · €</div>}
         <div style={{
           fontFamily: 'var(--f-display)',
-          fontSize: 22,
+          fontSize: isMobile ? 16 : 22,
           letterSpacing: '0.24em',
           fontWeight: 400,
         }}>ATELIER NOIRE</div>
-        <div style={{ display: 'flex', gap: 20, fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.12em' }}>
-          <span>SEARCH</span>
-          <span>ACCOUNT</span>
+        <div style={{ display: 'flex', gap: isMobile ? 12 : 20, fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.12em' }}>
+          {!isMobile && <span>SEARCH</span>}
+          {!isMobile && <span>ACCOUNT</span>}
           <span>BAG (2)</span>
         </div>
       </div>
-      {/* Nav */}
-      <div style={{ display: 'flex', gap: 28, padding: '14px 32px', borderBottom: '1px solid rgba(0,0,0,0.06)', fontSize: 12, letterSpacing: '0.08em' }}>
-        {['ATELIER','COUTURE','READY-TO-WEAR','ACCESSORIES','FRAGRANCE','JOURNAL','APPOINTMENT'].map(n => (
-          <span key={n}>{n}</span>
-        ))}
-      </div>
+
+      {/* Nav — hidden on mobile */}
+      {!isMobile && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, padding: '14px 32px', borderBottom: '1px solid rgba(0,0,0,0.06)', fontSize: 12, letterSpacing: '0.08em' }}>
+          {['ATELIER','COUTURE','READY-TO-WEAR','ACCESSORIES','FRAGRANCE','JOURNAL','APPOINTMENT'].map(n => (
+            <span key={n}>{n}</span>
+          ))}
+        </div>
+      )}
 
       {/* Hero split */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', minHeight: 360 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.1fr 1fr', minHeight: isMobile ? 'auto' : 360 }}>
         {/* Editorial */}
         <div style={{
-          padding: '56px 48px',
+          padding: isMobile ? '28px 20px' : '56px 48px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
+          gap: isMobile ? 20 : 0,
           position: 'relative',
         }}>
           <div style={{ fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.2em' }}>COLLECTION № 12 · SPRING 2026</div>
           <div>
             <div style={{
               fontFamily: 'var(--f-display)',
-              fontSize: 68,
+              fontSize: isMobile ? 36 : isTablet ? 48 : 68,
               lineHeight: 0.95,
               letterSpacing: '-0.03em',
               fontWeight: 400,
@@ -385,54 +430,59 @@ const CommerceMock = ({ c }) => {
               <em style={{ fontStyle: 'italic', fontWeight: 300 }}>La</em> Dentelle,<br />
               reconstructed.
             </div>
-            <div style={{ fontSize: 14, maxWidth: 380, color: '#3a3632', marginBottom: 32 }}>
+            <div style={{ fontSize: 14, maxWidth: 380, color: '#3a3632', marginBottom: 24 }}>
               Thirty-two pieces hand-finished in the atelier. Measured and fitted in-person or via private video consultation.
             </div>
-            <div style={{ display: 'flex', gap: 12, fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.12em' }}>
-              <span style={{ padding: '14px 22px', background: '#1C1A17', color: '#F5F2EC' }}>VIEW COLLECTION →</span>
-              <span style={{ padding: '14px 22px', border: '1px solid #1C1A17' }}>BOOK FITTING</span>
+            <div style={{ display: 'flex', gap: 12, fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.12em', flexWrap: 'wrap' }}>
+              <span style={{ padding: '12px 18px', background: '#1C1A17', color: '#F5F2EC' }}>VIEW COLLECTION →</span>
+              <span style={{ padding: '12px 18px', border: '1px solid #1C1A17' }}>BOOK FITTING</span>
             </div>
           </div>
-          <div style={{ fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.15em', color: '#7a7570' }}>
-            FIG.I — <em>Robe N° 08</em> · Soie sauvage, dentelle de Calais
-          </div>
+          {!isMobile && (
+            <div style={{ fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.15em', color: '#7a7570' }}>
+              FIG.I — <em>Robe N° 08</em> · Soie sauvage, dentelle de Calais
+            </div>
+          )}
         </div>
         {/* Image placeholder */}
         <div style={{
           background: 'linear-gradient(135deg, #d4c9b8 0%, #8a7f6f 60%, #3a342c 100%)',
           position: 'relative',
           overflow: 'hidden',
+          minHeight: isMobile ? 200 : 'auto',
         }}>
           <div style={{ position: 'absolute', inset: 24, border: '1px solid rgba(255,255,255,0.25)' }} />
+          {!isMobile && (
+            <div style={{
+              position: 'absolute',
+              top: 36, right: 36,
+              fontFamily: 'var(--f-mono)',
+              fontSize: 10,
+              letterSpacing: '0.18em',
+              color: 'rgba(255,255,255,0.8)',
+            }}>PLATE · N° 08 / 32</div>
+          )}
           <div style={{
-            position: 'absolute',
-            top: 36, right: 36,
-            fontFamily: 'var(--f-mono)',
-            fontSize: 10,
-            letterSpacing: '0.18em',
-            color: 'rgba(255,255,255,0.8)',
-          }}>PLATE · N° 08 / 32</div>
-          <div style={{
-            position: 'absolute', bottom: 36, left: 36, right: 36,
+            position: 'absolute', bottom: 24, left: 24, right: 24,
             display: 'flex', justifyContent: 'space-between',
-            fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.15em', color: 'rgba(255,255,255,0.8)',
+            fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.8)',
           }}>
             <span>€ 24 800</span>
-            <span>MADE-TO-ORDER · 6–8 WKS</span>
+            {!isMobile && <span>MADE-TO-ORDER · 6–8 WKS</span>}
           </div>
         </div>
       </div>
 
       {/* Product rail */}
-      <div style={{ padding: '40px 32px', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
+      <div style={{ padding: isMobile ? '24px 16px' : '40px 32px', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginBottom: 24 }}>
           <div>
             <div style={{ fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.2em', marginBottom: 6 }}>THE EDIT</div>
-            <div style={{ fontFamily: 'var(--f-display)', fontSize: 32, letterSpacing: '-0.02em' }}>Recently commissioned</div>
+            <div style={{ fontFamily: 'var(--f-display)', fontSize: isMobile ? 22 : 32, letterSpacing: '-0.02em' }}>Recently commissioned</div>
           </div>
           <div style={{ fontFamily: 'var(--f-mono)', fontSize: 10, letterSpacing: '0.12em' }}>01 / 04 →</div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: (isMobile || isTablet) ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: 16 }}>
           {[
             ['N° 12', 'Manteau en cachemire', '€ 8 400'],
             ['N° 17', 'Robe de soirée', '€ 14 200'],
