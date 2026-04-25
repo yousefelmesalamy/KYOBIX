@@ -225,6 +225,7 @@ const Select = ({ label, value, onChange, options }) => (
 // ====== Footer ======
 const Footer = () => {
   const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
+  const isAboutPage = window.location.pathname.includes('about');
 
   const wordmarkSize = isMobile
     ? 'clamp(44px, 15vw, 80px)'
@@ -285,8 +286,8 @@ const Footer = () => {
           </div>
 
           {[
-            ['PRACTICE', [['Services','#services'],['Process','#process'],['Casework','#work'],['Manifesto','#manifesto']]],
-            ['COMPANY', [['Careers','#'],['Press','#'],['Contact','#contact']]],
+            ['PRACTICE', [['Services', isAboutPage?'index.html#services':'#services'],['Process', isAboutPage?'index.html#process':'#process'],['Casework', isAboutPage?'index.html#work':'#work'],['Manifesto', isAboutPage?'index.html#manifesto':'#manifesto']]],
+            ['COMPANY', [['About','about.html'],['Careers','#'],['Press','#'],['Contact', isAboutPage?'index.html#contact':'#contact']]],
             ['RESOURCES', [['Engineering log','#'],['Blueprints','#'],['Glossary','#'],['Reading list','#']]],
             ['LEGAL', [['MSA template','#'],['Security','#'],['Privacy','#'],['Terms','#']]],
           ].map(([head, items]) => (

@@ -4,6 +4,8 @@ const Nav = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
   const isMobileNav = isMobile || isTablet;
+  const isAboutPage = window.location.pathname.includes('about');
+  const pagePrefix = isAboutPage ? 'index.html' : '';
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -40,7 +42,7 @@ const Nav = () => {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         height: 64,
       }}>
-        <a href="#top" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <a href={isAboutPage ? 'index.html' : '#top'} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <LogoMark size={20} />
           <span style={{
             fontFamily: 'var(--f-display)',
@@ -55,10 +57,11 @@ const Nav = () => {
         {!isMobileNav && (
           <nav style={{ display: 'flex', gap: 36, alignItems: 'center' }}>
             {[
-              ['Services', '#services'],
-              ['Process', '#process'],
-              ['Work', '#work'],
-              ['Manifesto', '#manifesto'],
+              ['Services', `${pagePrefix}#services`],
+              ['Process',  `${pagePrefix}#process`],
+              ['Work',     `${pagePrefix}#work`],
+              ['Manifesto',`${pagePrefix}#manifesto`],
+              ['About',    'about.html'],
             ].map(([label, href]) => (
               <a key={href} href={href} className="mono" style={{
                 fontSize: 11,
@@ -79,7 +82,7 @@ const Nav = () => {
             </span>
           )}
           {!isMobileNav && (
-            <a href="#contact" className="btn btn-primary" style={{ padding: '10px 16px', fontSize: 11 }}>
+            <a href={isAboutPage ? 'index.html#contact' : '#contact'} className="btn btn-primary" style={{ padding: '10px 16px', fontSize: 11 }}>
               Engage <span className="arrow">→</span>
             </a>
           )}
@@ -132,10 +135,11 @@ const Nav = () => {
           display: 'flex', flexDirection: 'column',
         }}>
           {[
-            ['Services', '#services'],
-            ['Process', '#process'],
-            ['Work', '#work'],
-            ['Manifesto', '#manifesto'],
+            ['Services', `${pagePrefix}#services`],
+            ['Process',  `${pagePrefix}#process`],
+            ['Work',     `${pagePrefix}#work`],
+            ['Manifesto',`${pagePrefix}#manifesto`],
+            ['About',    'about.html'],
           ].map(([label, href]) => (
             <a key={href} href={href}
               onClick={() => setMenuOpen(false)}
@@ -150,7 +154,7 @@ const Nav = () => {
               {label}
             </a>
           ))}
-          <a href="#contact" className="btn btn-primary"
+          <a href={isAboutPage ? 'index.html#contact' : '#contact'} className="btn btn-primary"
             onClick={() => setMenuOpen(false)}
             style={{ marginTop: 24, alignSelf: 'flex-start', fontSize: 11 }}>
             Engage <span className="arrow">→</span>
