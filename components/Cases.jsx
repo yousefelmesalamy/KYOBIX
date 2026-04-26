@@ -1,29 +1,29 @@
 const CASES = [
   {
     id: 'K-001',
-    client: 'Meridian Logistics Corp',
-    sector: 'Enterprise Tech · Inventory',
-    title: 'Real-time fleet & inventory intelligence',
-    summary: 'A complex data visualization dashboard unifying 14 warehouses, 2,400 SKUs, and live fleet telemetry into a single operational cockpit.',
-    stack: ['Angular 17', 'NgRx Signals', 'D3', 'ClickHouse', 'WebSocket'],
+    client: 'Meridian Global Logistics',
+    sector: 'Supply Chain Intelligence',
+    title: 'Unlocking $1.2M in annual operational efficiency',
+    summary: 'Fragmented data across 14 global hubs caused a 20% inventory slippage and significant resource waste. We engineered a real-time Intelligence Engine unifying 2,400 SKUs and live telemetry, eliminating manual audit overhead and reducing decision latency by 67%.',
+    stack: ['Angular', 'NgRx Signals', 'D3', 'ClickHouse', 'WebSocket'],
     stats: [
-      ['Dashboard load', '380ms', 'p95'],
-      ['Data points live', '2.4M', '/hr'],
-      ['Decision latency', '−67%', 'vs. legacy'],
+      ['Annual Efficiency', '$1.2M', 'SAVINGS'],
+      ['Inventory Slippage', '−20%', 'REDUCTION'],
+      ['Decision Latency', '−67%', 'REAL-TIME'],
     ],
     kind: 'dashboard',
   },
   {
     id: 'K-002',
     client: 'Atelier Noire',
-    sector: 'Luxury Retail · E-Commerce',
-    title: 'Couture e-commerce architecture',
-    summary: 'A headless commerce platform for a luxury house — bespoke PIM, atelier-to-client logistics, and a checkout engineered for six-figure carts.',
+    sector: 'High-Ticket E-Commerce',
+    title: 'Mitigating $400k/mo in abandoned high-value carts',
+    summary: 'A legacy monolithic storefront was failing during peak global sales events, causing loss of high-AOV customers. We re-architected the system into a Headless Commerce Engine optimized for $50k+ transactions, achieving a 41% conversion lift for high-ticket orders.',
     stack: ['Next.js', 'Shopify Hydrogen', 'Sanity', 'Algolia', 'Stripe'],
     stats: [
-      ['Avg. order value', '$18,400', 'AOV'],
-      ['LCP', '0.9s', 'global median'],
-      ['Conversion lift', '+41%', 'YoY'],
+      ['Monthly Recovery', '$400k', 'RECLAIMED'],
+      ['Avg. Order Value', '$18,400', 'AOV'],
+      ['Conversion Lift', '+41%', 'YoY'],
     ],
     kind: 'ecommerce',
   },
@@ -38,10 +38,10 @@ const CaseStudies = () => {
     <section id="work" className="section">
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 03 / CASEWORK</div>
+          <div className="eyebrow">CASE STUDIES</div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', gap: 32, flexWrap: 'wrap' }}>
             <h2 className="display h2">
-              Two representative<br />builds.
+              Recent<br />projects.
             </h2>
             <div style={{ display: 'flex', gap: 8 }}>
               {CASES.map((cs, i) => (
@@ -156,7 +156,7 @@ const DashboardMock = ({ c, isMobile, isTablet }) => {
 
   const lineData = React.useMemo(() => {
     const n = 60;
-    return Array.from({length: n}, (_, i) => {
+    return Array.from({ length: n }, (_, i) => {
       const base = 50 + Math.sin(i * 0.3 + tick * 0.2) * 18;
       const noise = Math.sin(i * 1.3) * 6;
       return Math.max(8, Math.min(92, base + noise));
@@ -245,7 +245,7 @@ const DashboardMock = ({ c, isMobile, isTablet }) => {
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--ok)', boxShadow: '0 0 8px var(--ok)' }} />
             LIVE · 2.4M/hr
           </span>
-          <span style={{ color: 'var(--titanium-3)' }}>T+{String(tick).padStart(4,'0')}s</span>
+          <span style={{ color: 'var(--titanium-3)' }}>T+{String(tick).padStart(4, '0')}s</span>
         </div>
       </div>
 
@@ -258,7 +258,7 @@ const DashboardMock = ({ c, isMobile, isTablet }) => {
             padding: '16px 14px',
             fontSize: 11,
           }}>
-            {['OVERVIEW','FLEET','INVENTORY','WAREHOUSES','FORECAST','ALERTS','ACCOUNT'].map((it, i) => (
+            {['OVERVIEW', 'FLEET', 'INVENTORY', 'WAREHOUSES', 'FORECAST', 'ALERTS', 'ACCOUNT'].map((it, i) => (
               <div key={it} style={{
                 padding: '10px 10px',
                 marginBottom: 2,
@@ -290,7 +290,7 @@ const DashboardMock = ({ c, isMobile, isTablet }) => {
               ['IN TRANSIT', '1,847 SKU', '−0.2%', 'var(--titanium-2)'],
               ['STOCKOUTS', '3', '+1', 'var(--danger)'],
               ['ON-TIME RATE', '98.4%', '+0.8%', 'var(--ok)'],
-            ].map(([l,v,d,col], i) => (
+            ].map(([l, v, d, col], i) => (
               <div key={i} style={{ border: '1px solid var(--line)', padding: 12 }}>
                 <div style={{ fontSize: 9, color: 'var(--titanium-3)', marginBottom: 8 }}>{l}</div>
                 <div style={{ fontSize: 22, color: 'var(--titanium-hi)', fontFamily: 'var(--f-display)', fontWeight: 500, letterSpacing: '-0.02em' }}>{v}</div>
@@ -304,8 +304,8 @@ const DashboardMock = ({ c, isMobile, isTablet }) => {
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 12 }}>
               <div style={{ fontSize: 11, color: 'var(--titanium-hi)' }}>THROUGHPUT · 60min rolling</div>
               <div style={{ display: 'flex', gap: 12, fontSize: 9 }}>
-                <span style={{ color: 'var(--titanium-2)' }}><span style={{color: 'var(--cobalt)'}}>●</span> UNITS/MIN</span>
-                <span style={{ color: 'var(--titanium-3)' }}><span style={{color: 'var(--titanium-3)'}}>●</span> BASELINE</span>
+                <span style={{ color: 'var(--titanium-2)' }}><span style={{ color: 'var(--cobalt)' }}>●</span> UNITS/MIN</span>
+                <span style={{ color: 'var(--titanium-3)' }}><span style={{ color: 'var(--titanium-3)' }}>●</span> BASELINE</span>
               </div>
             </div>
             <svg viewBox="0 0 560 180" style={{ width: '100%', height: 180, display: 'block' }} preserveAspectRatio="none">
@@ -315,8 +315,8 @@ const DashboardMock = ({ c, isMobile, isTablet }) => {
                   <stop offset="100%" stopColor="var(--cobalt)" stopOpacity="0" />
                 </linearGradient>
               </defs>
-              {[0.25,0.5,0.75].map(y => (
-                <line key={y} x1="0" y1={180*y} x2="560" y2={180*y} stroke="var(--line)" strokeDasharray="2 3" />
+              {[0.25, 0.5, 0.75].map(y => (
+                <line key={y} x1="0" y1={180 * y} x2="560" y2={180 * y} stroke="var(--line)" strokeDasharray="2 3" />
               ))}
               <path d={areaPath} fill="url(#areaG)" />
               <path d={linePath} fill="none" stroke="var(--cobalt)" strokeWidth="1.5" />
@@ -329,13 +329,13 @@ const DashboardMock = ({ c, isMobile, isTablet }) => {
               <div style={{ border: '1px solid var(--line)', padding: 14 }}>
                 <div style={{ fontSize: 11, color: 'var(--titanium-hi)', marginBottom: 12 }}>WAREHOUSE CAPACITY</div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 4 }}>
-                  {Array.from({length: 14}).map((_, i) => {
+                  {Array.from({ length: 14 }).map((_, i) => {
                     const v = ((Math.sin(i * 0.9) + 1) / 2);
                     const col = v > 0.8 ? 'var(--danger)' : v > 0.6 ? 'var(--cobalt)' : 'var(--titanium-3)';
                     return (
                       <div key={i} style={{ aspectRatio: '1.1', background: col, opacity: 0.3 + v * 0.7, position: 'relative' }}>
                         <span style={{ position: 'absolute', top: 4, left: 4, fontSize: 8, color: 'var(--ink)', fontWeight: 600 }}>
-                          W{String(i+1).padStart(2,'0')}
+                          W{String(i + 1).padStart(2, '0')}
                         </span>
                       </div>
                     );
@@ -400,7 +400,7 @@ const CommerceMock = ({ c, isMobile, isTablet }) => {
       {/* Nav — hidden on mobile */}
       {!isMobile && (
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, padding: '14px 32px', borderBottom: '1px solid rgba(0,0,0,0.06)', fontSize: 12, letterSpacing: '0.08em' }}>
-          {['ATELIER','COUTURE','READY-TO-WEAR','ACCESSORIES','FRAGRANCE','JOURNAL','APPOINTMENT'].map(n => (
+          {['ATELIER', 'COUTURE', 'READY-TO-WEAR', 'ACCESSORIES', 'FRAGRANCE', 'JOURNAL', 'APPOINTMENT'].map(n => (
             <span key={n}>{n}</span>
           ))}
         </div>
@@ -492,7 +492,7 @@ const CommerceMock = ({ c, isMobile, isTablet }) => {
             <div key={n}>
               <div style={{
                 aspectRatio: '3/4',
-                background: ['#c9bdaa','#a89580','#6b6055','#3a342c'][i],
+                background: ['#c9bdaa', '#a89580', '#6b6055', '#3a342c'][i],
                 marginBottom: 10,
                 position: 'relative',
               }}>

@@ -91,8 +91,8 @@ const Nav = () => {
             </span>
           )}
           {!isMobileNav && (
-            <a href={isAboutPage ? 'index.html#contact' : '#contact'} className="btn btn-primary" style={{ padding: '10px 16px', fontSize: 11 }}>
-              Engage <span className="arrow">→</span>
+            <a href="https://cal.com/kyobix/30min?overlayCalendar=true" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ padding: '10px 16px', fontSize: 11 }}>
+              Schedule a Call <span className="arrow">→</span>
             </a>
           )}
 
@@ -164,10 +164,10 @@ const Nav = () => {
               {label}
               </a>
             ))}
-            <a href={isAboutPage ? 'index.html#contact' : '#contact'} className="btn btn-primary"
+            <a href="https://cal.com/kyobix/30min?overlayCalendar=true" target="_blank" rel="noopener noreferrer" className="btn btn-primary"
               onClick={() => setMenuOpen(false)}
             style={{ marginTop: 24, alignSelf: 'flex-start', fontSize: 11 }}>
-            Engage <span className="arrow">→</span>
+            Schedule a Call <span className="arrow">→</span>
           </a>
         </div>
       )}

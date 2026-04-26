@@ -50,7 +50,7 @@ const InvestmentHero = () => {
           paddingTop: isMobile ? 24 : 40, paddingBottom: isMobile ? 28 : 48,
           borderBottom: '1px solid var(--line)', marginBottom: isMobile ? 28 : 48,
         }}>
-          <div className="mono" style={{ color: 'var(--titanium-3)', fontSize: 10 }}>§ INV / INVESTMENT — KYOBIX.ARCHITECTURE</div>
+          <div className="mono" style={{ color: 'var(--titanium-3)', fontSize: 10 }}>INVESTMENT — KYOBIX</div>
           {!isMobile && <div className="mono" style={{ color: 'var(--titanium-3)', fontSize: 10 }}>FIXED-SCOPE · NO SURPRISES · PRINCIPAL-LED</div>}
         </div>
         <div className="eyebrow" style={{ marginBottom: 24 }}>Pricing</div>
@@ -82,7 +82,7 @@ const InvestmentTiers = () => {
     <section className="section">
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 01 / TIERS</div>
+          <div className="eyebrow">ENGAGEMENT TIERS</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 16 }}>Engagement types.</h2>
             <p style={{ maxWidth: 480, fontSize: 17, color: 'var(--titanium-2)' }}>
@@ -150,7 +150,7 @@ const InvestmentFactors = () => {
     <section className="section" style={{ background: 'var(--graphite)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 02 / FACTORS</div>
+          <div className="eyebrow">COST FACTORS</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 16 }}>What drives cost.</h2>
             <p style={{ maxWidth: 480, fontSize: 17, color: 'var(--titanium-2)' }}>
@@ -191,7 +191,7 @@ const InvestmentProcess = () => {
     <section className="section">
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 03 / PROCESS</div>
+          <div className="eyebrow">SCOPING PROCESS</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 16 }}>How scoping works.</h2>
             <p style={{ maxWidth: 480, fontSize: 17, color: 'var(--titanium-2)' }}>
@@ -255,7 +255,7 @@ const InvestmentCTA = () => {
     <section className="section" style={{ background: 'var(--graphite)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 04 / ENGAGE</div>
+          <div className="eyebrow">GET STARTED</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
               Ready to scope<br />

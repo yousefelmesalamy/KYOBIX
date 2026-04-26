@@ -1,3 +1,113 @@
+// ====== Quick Inquiry form ======
+const QuickInquiry = () => {
+  const [quick, setQuick] = React.useState({ name: '', email: '', need: '' });
+  const [quickSent, setQuickSent] = React.useState(false);
+  const { isMobile } = React.useContext(window.BreakpointContext);
+
+  const updateQuick = (k) => (e) => setQuick({ ...quick, [k]: e.target.value });
+
+  const submitQuick = (e) => {
+    e.preventDefault();
+    setQuickSent(true);
+  };
+
+  if (quickSent) {
+    return (
+      <div style={{
+        border: '1px solid var(--line-2)',
+        background: 'var(--graphite-2)',
+        padding: isMobile ? 24 : 32,
+        marginBottom: 40,
+        display: 'flex',
+        alignItems: 'center',
+        gap: 16,
+      }}>
+        <span style={{ width: 8, height: 8, background: 'var(--ok)', borderRadius: '50%', boxShadow: '0 0 8px var(--ok)', flexShrink: 0 }} />
+        <div>
+          <div style={{ color: 'var(--titanium-hi)', fontSize: 16, fontWeight: 500, marginBottom: 4 }}>Received.</div>
+          <div style={{ color: 'var(--titanium-2)', fontSize: 14 }}>A principal will reply within two business days.</div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={submitQuick} style={{
+      border: '1px solid var(--line-2)',
+      background: 'var(--graphite-2)',
+      padding: isMobile ? 24 : 32,
+      marginBottom: 40,
+      position: 'relative',
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24, flexWrap: 'wrap', gap: 8 }}>
+        <div className="mono" style={{ color: 'var(--titanium-3)' }}>QUALIFIED INQUIRY · 30 SECONDS</div>
+        <div className="mono" style={{ color: 'var(--titanium-3)', fontSize: 10 }}>Response time: &lt; 24h for high-intent queries</div>
+      </div>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr 1.2fr auto',
+        gap: isMobile ? 16 : 14,
+        alignItems: 'end',
+      }}>
+        <div>
+          <label className="mono" style={{ color: 'var(--titanium-3)', display: 'block', marginBottom: 8, fontSize: 10 }}>NAME & COMPANY</label>
+          <input
+            value={quick.name}
+            onChange={updateQuick('name')}
+            placeholder="Jane Smith, Acme Inc."
+            required
+            style={{
+              width: '100%', background: 'transparent', border: 'none',
+              borderBottom: '1px solid var(--titanium-3)', color: 'var(--titanium-hi)',
+              padding: '10px 0', fontFamily: 'var(--f-body)', fontSize: 14, outline: 'none',
+              transition: 'border-color 150ms',
+            }}
+            onFocus={e => e.target.style.borderBottomColor = 'var(--cobalt)'}
+            onBlur={e => e.target.style.borderBottomColor = 'var(--titanium-3)'}
+          />
+        </div>
+        <div>
+          <label className="mono" style={{ color: 'var(--titanium-3)', display: 'block', marginBottom: 8, fontSize: 10 }}>EMAIL</label>
+          <input
+            value={quick.email}
+            onChange={updateQuick('email')}
+            placeholder="name@company.com"
+            type="email"
+            required
+            style={{
+              width: '100%', background: 'transparent', border: 'none',
+              borderBottom: '1px solid var(--titanium-3)', color: 'var(--titanium-hi)',
+              padding: '10px 0', fontFamily: 'var(--f-body)', fontSize: 14, outline: 'none',
+              transition: 'border-color 150ms',
+            }}
+            onFocus={e => e.target.style.borderBottomColor = 'var(--cobalt)'}
+            onBlur={e => e.target.style.borderBottomColor = 'var(--titanium-3)'}
+          />
+        </div>
+        <div>
+          <label className="mono" style={{ color: 'var(--titanium-3)', display: 'block', marginBottom: 8, fontSize: 10 }}>WHAT ARE YOU LOOKING FOR?</label>
+          <input
+            value={quick.need}
+            onChange={updateQuick('need')}
+            placeholder="E.g. SaaS architecture, commerce platform, advisory"
+            style={{
+              width: '100%', background: 'transparent', border: 'none',
+              borderBottom: '1px solid var(--titanium-3)', color: 'var(--titanium-hi)',
+              padding: '10px 0', fontFamily: 'var(--f-body)', fontSize: 14, outline: 'none',
+              transition: 'border-color 150ms',
+            }}
+            onFocus={e => e.target.style.borderBottomColor = 'var(--cobalt)'}
+            onBlur={e => e.target.style.borderBottomColor = 'var(--titanium-3)'}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary" style={{ padding: '12px 20px', fontSize: 11, whiteSpace: 'nowrap' }}>
+          Submit for Review <span className="arrow">→</span>
+        </button>
+      </div>
+    </form>
+  );
+};
+
 // ====== Contact / Engagement form ======
 const Contact = () => {
   const [form, setForm] = React.useState({
@@ -18,21 +128,26 @@ const Contact = () => {
     <section id="contact" className="section" style={{ background: 'var(--graphite)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 07 / ENGAGE</div>
+          <div className="eyebrow">GET STARTED</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
-              Commission<br />
-              <span style={{ color: 'var(--titanium-2)' }}>a build.</span>
+              Request an<br />
+              intake review<span style={{ color: 'var(--titanium-2)' }}>.</span>
             </h2>
             <p style={{ maxWidth: 560, fontSize: 17, color: 'var(--titanium-2)' }}>
-              We take on six engagements per year. Tell us what you're bridging.
-              A principal replies within two business days.
+              Describe your architecture challenges. A senior principal will review your 
+              brief and reply within two business days.
             </p>
           </div>
         </div>
 
+        <QuickInquiry />
+
+        <div className="mono" style={{ color: 'var(--titanium-3)', marginBottom: 16, fontSize: 10 }}>
+          OR SUBMIT A DETAILED BRIEF
+        </div>
+
         <div style={{
-          display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr 1.2fr' : '1fr 1.4fr',
           border: '1px solid var(--line-2)',
           background: 'var(--graphite-2)',
@@ -72,17 +187,17 @@ const Contact = () => {
 
             <div style={{ marginBottom: 28, paddingTop: 24, borderTop: '1px solid var(--line)' }}>
               <div className="mono" style={{ marginBottom: 10, color: 'var(--titanium-3)' }}>BOOK A CALL</div>
-              <a
+               <a
                 href="https://cal.com/kyobix/30min?overlayCalendar=true"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn"
+                className="btn btn-primary"
                 style={{ fontSize: 11 }}
               >
-                30-min scoping call <span className="arrow">→</span>
+                Schedule Technical Audit <span className="arrow">→</span>
               </a>
               <div className="mono" style={{ marginTop: 8, fontSize: 10, color: 'var(--titanium-3)' }}>
-                FREE · NO COMMITMENT · PRINCIPAL ONLY
+                PRINCIPAL-LED · TECHNICAL AUDIT · MISSION CRITICAL
               </div>
             </div>
 
@@ -172,7 +287,7 @@ const Contact = () => {
                 ⊹ Encrypted · PGP available on request
               </div>
               <button type="submit" className="btn btn-primary" style={{ padding: '16px 28px' }}>
-                Transmit brief <span className="arrow">→</span>
+                Submit Brief for Principal Review <span className="arrow">→</span>
               </button>
             </div>
           </form>
@@ -293,8 +408,8 @@ const Footer = () => {
               <span style={{ fontFamily: 'var(--f-display)', fontWeight: 600, color: 'var(--titanium-hi)' }}>KYOBIX</span>
             </div>
             <p style={{ color: 'var(--titanium-2)', fontSize: 14, maxWidth: 380, marginBottom: 20 }}>
-              High-end software architecture. Engineering the exact connection point
-              between complex business logic and seamless software.
+              We build the software systems that businesses run on.
+              Senior engineers, clear timelines, no outsourcing.
             </p>
             <div className="mono" style={{ color: 'var(--titanium-3)' }}>
               © 2026 Kyobix Pte. Ltd. · All systems reserved.

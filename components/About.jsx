@@ -49,12 +49,12 @@ const Metric = ({ label, value, suffix, prefix, decimals = 0, note, compact }) =
 
 // ====== Data ======
 const ABOUT_METRICS = [
-  { label: 'YEARS OPERATING',       value: 3,    suffix: 'yrs', note: 'Founded Seoul, 2023.' },
-  { label: 'ENGINEERS ON RETAINER', value: 6,    suffix: '+',   note: 'Every one a principal-grade contributor.' },
-  { label: 'SYSTEMS SHIPPED',       value: 23,   suffix: '+',   note: 'Across fintech, retail, logistics.' },
-  { label: 'CLIENT RETENTION',      value: 100,  suffix: '%',   note: 'Every engagement renewed or expanded.' },
-  { label: 'AVG ENGAGEMENT VALUE',  value: 280,  prefix: '$',   suffix: 'k', note: 'Fixed-scope and retainer combined.' },
-  { label: 'ON-TIME DELIVERY',      value: 97.8, decimals: 1,   suffix: '%', note: 'Rolling 36-month average.' },
+  { label: 'YEARS OPERATING', value: 3, suffix: 'yrs', note: 'Founded Seoul, 2023.' },
+  { label: 'ENGINEERS ON RETAINER', value: 6, suffix: '+', note: 'Every one a principal-grade contributor.' },
+  { label: 'SYSTEMS SHIPPED', value: 23, suffix: '+', note: 'Across fintech, retail, logistics.' },
+  { label: 'CLIENT RETENTION', value: 100, suffix: '%', note: 'Every engagement renewed or expanded.' },
+  { label: 'AVG ENGAGEMENT VALUE', value: 280, prefix: '$', suffix: 'k', note: 'Fixed-scope and retainer combined.' },
+  { label: 'ON-TIME DELIVERY', value: 97.8, decimals: 1, suffix: '%', note: 'Rolling 36-month average.' },
 ];
 
 const ABOUT_PRINCIPLES = [
@@ -85,51 +85,51 @@ const ABOUT_PRINCIPLES = [
 ];
 
 const TEAM = [
-  { name: 'Seo-jun Pak',      role: 'Principal · Architecture',   loc: 'SEL', init: 'SP' },
-  { name: 'Clara Ivanova',    role: 'Lead · Front-End Systems',   loc: 'BER', init: 'CI' },
-  { name: 'Marcus Delacroix', role: 'Lead · Infrastructure',      loc: 'NYC', init: 'MD' },
-  { name: 'Yuki Tanaka',      role: 'Design Engineer',            loc: 'TYO', init: 'YT' },
-  { name: 'Amara Obi',        role: 'Commerce Systems',           loc: 'LON', init: 'AO' },
-  { name: 'Rafael Moreno',    role: 'Data · Observability',       loc: 'MAD', init: 'RM' },
+  { name: 'Seo-jun Pak', role: 'Principal · Architecture', loc: 'SEL', init: 'SP' },
+  { name: 'Clara Ivanova', role: 'Lead · Front-End Systems', loc: 'BER', init: 'CI' },
+  { name: 'Marcus Delacroix', role: 'Lead · Infrastructure', loc: 'NYC', init: 'MD' },
+  { name: 'Yuki Tanaka', role: 'Design Engineer', loc: 'TYO', init: 'YT' },
+  { name: 'Amara Obi', role: 'Commerce Systems', loc: 'LON', init: 'AO' },
+  { name: 'Rafael Moreno', role: 'Data · Observability', loc: 'MAD', init: 'RM' },
 ];
 
 const UTC_OFFSET = { SEL: '+9', TYO: '+9', NYC: '−4', LON: '+0', BER: '+1', MAD: '+1' };
 
 const STACK_CAPABILITIES = [
-  { category: 'FRONT-END',      items: ['Angular 17+', 'React / Next.js', 'TypeScript', 'RxJS', 'NgRx Signals', 'TanStack Query', 'D3.js', 'Three.js'] },
-  { category: 'BACK-END',       items: ['Node.js', 'PostgreSQL', 'Redis', 'GraphQL', 'REST / OpenAPI', 'gRPC', 'ClickHouse', 'Kafka'] },
+  { category: 'FRONT-END', items: ['Angular', 'React / Next.js', 'TypeScript', 'RxJS', 'NgRx Signals', 'TanStack Query', 'D3.js', 'Three.js'] },
+  { category: 'BACK-END', items: ['Node.js', 'PostgreSQL', 'Redis', 'GraphQL', 'REST / OpenAPI', 'gRPC', 'ClickHouse', 'Kafka'] },
   { category: 'INFRASTRUCTURE', items: ['AWS', 'GCP', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD pipelines', 'OpenTelemetry', 'Prometheus'] },
-  { category: 'COMMERCE',       items: ['Shopify Hydrogen', 'Sanity CMS', 'Algolia', 'Stripe', 'PIM architecture', 'ERP integration'] },
-  { category: 'ARCHITECTURE',   items: ['C4 Model', 'ADR', 'Event Storming', 'Domain-Driven Design', 'CQRS', 'Saga pattern'] },
+  { category: 'COMMERCE', items: ['Shopify Hydrogen', 'Sanity CMS', 'Algolia', 'Stripe', 'PIM architecture', 'ERP integration'] },
+  { category: 'ARCHITECTURE', items: ['C4 Model', 'ADR', 'Event Storming', 'Domain-Driven Design', 'CQRS', 'Saga pattern'] },
 ];
 
 const VERTICALS = [
-  { label: 'Enterprise SaaS',    note: 'Multi-tenant platforms, billing engines, audit trails.' },
-  { label: 'Fintech',            note: 'Real-time data pipelines, compliance, ledger systems.' },
-  { label: 'Luxury Retail',      note: 'Headless commerce, PIM, high-AOV checkout flows.' },
-  { label: 'Logistics',          note: 'Fleet telemetry, warehouse ops, routing systems.' },
-  { label: 'Healthcare',         note: 'HIPAA-adjacent data flows, HL7/FHIR integration.' },
+  { label: 'Enterprise SaaS', note: 'Multi-tenant platforms, billing engines, audit trails.' },
+  { label: 'Fintech', note: 'Real-time data pipelines, compliance, ledger systems.' },
+  { label: 'Luxury Retail', note: 'Headless commerce, PIM, high-AOV checkout flows.' },
+  { label: 'Logistics', note: 'Fleet telemetry, warehouse ops, routing systems.' },
+  { label: 'Healthcare', note: 'HIPAA-adjacent data flows, HL7/FHIR integration.' },
   { label: 'Media & Publishing', note: 'Editorial platforms, CDN architecture, search.' },
 ];
 
 const GEO_OFFICES = [
-  { city: 'Seoul',    code: 'SEL', role: 'HQ · Architecture',   tz: 'UTC+9' },
-  { city: 'Berlin',   code: 'BER', role: 'Front-End Systems',   tz: 'UTC+1' },
-  { city: 'New York', code: 'NYC', role: 'Infrastructure',      tz: 'UTC−4' },
-  { city: 'Tokyo',    code: 'TYO', role: 'Design Engineering',  tz: 'UTC+9' },
-  { city: 'London',   code: 'LON', role: 'Commerce Systems',    tz: 'UTC+0' },
-  { city: 'Madrid',   code: 'MAD', role: 'Data · Observability',tz: 'UTC+1' },
+  { city: 'Seoul', code: 'SEL', role: 'HQ · Architecture', tz: 'UTC+9' },
+  { city: 'Berlin', code: 'BER', role: 'Front-End Systems', tz: 'UTC+1' },
+  { city: 'New York', code: 'NYC', role: 'Infrastructure', tz: 'UTC−4' },
+  { city: 'Tokyo', code: 'TYO', role: 'Design Engineering', tz: 'UTC+9' },
+  { city: 'London', code: 'LON', role: 'Commerce Systems', tz: 'UTC+0' },
+  { city: 'Madrid', code: 'MAD', role: 'Data · Observability', tz: 'UTC+1' },
 ];
 
 const COMPARISON_ROWS = [
-  { dimension: 'WHO BUILDS',           kyobix: 'The principal who scoped it',           typical: 'Whoever is available on the bench' },
-  { dimension: 'DOCUMENTATION',        kyobix: 'ADRs, C4 models, runbooks — always',   typical: 'Confluence pages, if remembered' },
-  { dimension: 'SUBCONTRACTING',       kyobix: 'Never',                                 typical: 'Common, often undisclosed' },
-  { dimension: 'SCOPE MANAGEMENT',     kyobix: 'Hard limits, set early. No surprises.', typical: 'Change orders at 80% complete' },
-  { dimension: 'OBSERVABILITY',        kyobix: 'First commit: metrics, traces, logs',   typical: 'Added post-launch if budget remains' },
-  { dimension: 'HANDOVER',             kyobix: 'Your team owns it from day one',        typical: 'Key-person dependency baked in' },
-  { dimension: 'ENGAGEMENTS / YEAR',   kyobix: 'Six maximum — by design',              typical: 'As many as can be sold' },
-  { dimension: 'POST-DELIVERY',        kyobix: 'Advisory retainer available',           typical: 'Support tickets; new SOW required' },
+  { dimension: 'WHO BUILDS', kyobix: 'The principal who scoped it', typical: 'Whoever is available on the bench' },
+  { dimension: 'DOCUMENTATION', kyobix: 'ADRs, C4 models, runbooks — always', typical: 'Confluence pages, if remembered' },
+  { dimension: 'SUBCONTRACTING', kyobix: 'Never', typical: 'Common, often undisclosed' },
+  { dimension: 'SCOPE MANAGEMENT', kyobix: 'Hard limits, set early. No surprises.', typical: 'Change orders at 80% complete' },
+  { dimension: 'OBSERVABILITY', kyobix: 'First commit: metrics, traces, logs', typical: 'Added post-launch if budget remains' },
+  { dimension: 'HANDOVER', kyobix: 'Your team owns it from day one', typical: 'Key-person dependency baked in' },
+  { dimension: 'ENGAGEMENTS / YEAR', kyobix: 'Six maximum — by design', typical: 'As many as can be sold' },
+  { dimension: 'POST-DELIVERY', kyobix: 'Advisory retainer available', typical: 'Support tickets; new SOW required' },
 ];
 
 const TIMELINE_EVENTS = [
@@ -142,7 +142,7 @@ const TIMELINE_EVENTS = [
   { year: '2026', q: 'Q1', event: 'v2026 platform refresh', detail: 'Internal tooling, blueprint templates, and ADR library rebuilt from the ground up. Kyobix.io relaunched. Q3 2026 engagement slate now forming.' },
 ];
 
-// ====== § 08 / ABOUT — Hero ======
+// ====== About — Hero ======
 const AboutHero = () => {
   const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
 
@@ -168,7 +168,7 @@ const AboutHero = () => {
           borderBottom: '1px solid var(--line)',
           marginBottom: isMobile ? 32 : 56,
         }}>
-          <div className="mono" style={{ color: 'var(--titanium-3)', fontSize: 10 }}>§ 08 / ABOUT — KYOBIX.ARCHITECTURE</div>
+          <div className="mono" style={{ color: 'var(--titanium-3)', fontSize: 10 }}>ABOUT — KYOBIX</div>
           {!isMobile && (
             <div className="mono" style={{ color: 'var(--titanium-3)', fontSize: 10 }}>
               EST. 2023 · SEL / BER / NYC / TYO / LON / MAD
@@ -251,10 +251,10 @@ const PracticeTopology = () => {
       {/* Frame */}
       <rect x="1" y="1" width="478" height="318" fill="none" stroke="rgba(216,220,226,0.08)" strokeWidth="1" />
       {/* Corner ticks */}
-      {[[1,1],[469,1],[1,309],[469,309]].map(([cx,cy],i) => (
+      {[[1, 1], [469, 1], [1, 309], [469, 309]].map(([cx, cy], i) => (
         <g key={i}>
-          <line x1={cx} y1={cy} x2={cx+10} y2={cy} stroke="var(--titanium-3)" strokeWidth="1" />
-          <line x1={cx} y1={cy} x2={cx} y2={cy+10} stroke="var(--titanium-3)" strokeWidth="1" />
+          <line x1={cx} y1={cy} x2={cx + 10} y2={cy} stroke="var(--titanium-3)" strokeWidth="1" />
+          <line x1={cx} y1={cy} x2={cx} y2={cy + 10} stroke="var(--titanium-3)" strokeWidth="1" />
         </g>
       ))}
 
@@ -302,7 +302,7 @@ const PracticeTopology = () => {
   );
 };
 
-// ====== § 09 / PROOF — Metrics ======
+// ====== About — Metrics ======
 const AboutMetrics = () => {
   const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
   const compact = isMobile || isTablet;
@@ -312,7 +312,7 @@ const AboutMetrics = () => {
     <section className="section" style={{ borderTop: '1px solid var(--line)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 09 / PROOF</div>
+          <div className="eyebrow">PROOF</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
               Six numbers<br />
@@ -347,7 +347,7 @@ const AboutMetrics = () => {
   );
 };
 
-// ====== § 10 / PHILOSOPHY — Approach ======
+// ====== About — Approach ======
 const AboutApproach = () => {
   const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
   const [active, setActive] = React.useState(0);
@@ -356,7 +356,7 @@ const AboutApproach = () => {
     <section id="approach" className="section" style={{ background: 'var(--graphite)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 10 / PHILOSOPHY</div>
+          <div className="eyebrow">OUR PHILOSOPHY</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
               Four principles.<br />
@@ -468,7 +468,7 @@ const AboutApproach = () => {
   );
 };
 
-// ====== § 11 / PRINCIPALS — Team ======
+// ====== About — Team ======
 const AboutTeam = () => {
   const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
   const cols = isMobile ? 1 : isTablet ? 2 : 3;
@@ -477,7 +477,7 @@ const AboutTeam = () => {
     <section id="principals" className="section" style={{ background: 'var(--graphite)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 11 / PRINCIPALS</div>
+          <div className="eyebrow">OUR TEAM</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
               Six engineers.<br />
@@ -512,8 +512,8 @@ const AboutTeam = () => {
                 transition: 'background 200ms',
                 cursor: 'pointer',
               }}
-              onMouseEnter={e => e.currentTarget.style.background = 'rgba(42,83,255,0.04)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(42,83,255,0.04)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
               >
                 <div style={{
                   width: 64, height: 64,
@@ -551,7 +551,7 @@ const AboutTeam = () => {
   );
 };
 
-// ====== § 12 / STACK — Track Record ======
+// ====== About — Track Record ======
 const AboutTrackRecord = () => {
   const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
   const stackCols = isMobile ? 1 : isTablet ? 2 : 5;
@@ -562,7 +562,7 @@ const AboutTrackRecord = () => {
       <div className="container">
         {/* Stack capabilities */}
         <div className="section-head">
-          <div className="eyebrow">§ 12 / STACK</div>
+          <div className="eyebrow">CAPABILITIES</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
               Technical range.
@@ -646,8 +646,8 @@ const AboutTrackRecord = () => {
                 transition: 'background 200ms',
                 cursor: 'default',
               }}
-              onMouseEnter={e => e.currentTarget.style.background = 'rgba(42,83,255,0.04)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(42,83,255,0.04)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
               >
                 <div style={{
                   width: 56, height: 56,
@@ -677,7 +677,7 @@ const AboutTrackRecord = () => {
   );
 };
 
-// ====== § 13 / DIFFERENTIATORS — Why Kyobix ======
+// ====== About — Why Kyobix ======
 const AboutWhyKyobix = () => {
   const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
   const gridCols = isMobile ? '1fr' : '1.2fr 1.4fr 1.4fr';
@@ -686,7 +686,7 @@ const AboutWhyKyobix = () => {
     <section id="why" className="section" style={{ background: 'var(--graphite)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 13 / DIFFERENTIATORS</div>
+          <div className="eyebrow">WHY KYOBIX</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
               Why Kyobix<br />
@@ -773,7 +773,7 @@ const AboutWhyKyobix = () => {
   );
 };
 
-// ====== § 14 / HISTORY — Timeline ======
+// ====== About — Timeline ======
 const AboutTimeline = () => {
   const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
 
@@ -781,7 +781,7 @@ const AboutTimeline = () => {
     <section id="history" className="section">
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 14 / HISTORY</div>
+          <div className="eyebrow">OUR STORY</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
               Three years.<br />
@@ -861,7 +861,7 @@ const AboutTimeline = () => {
   );
 };
 
-// ====== § 15 / ENGAGE — CTA ======
+// ====== About — CTA ======
 const AboutCTA = () => {
   const { isMobile } = React.useContext(window.BreakpointContext);
 
@@ -869,7 +869,7 @@ const AboutCTA = () => {
     <section id="cta" className="section" style={{ background: 'var(--graphite)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 15 / ENGAGE</div>
+          <div className="eyebrow">GET STARTED</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
               Commission<br />
@@ -903,7 +903,7 @@ const AboutCTA = () => {
             <span style={{ color: 'var(--titanium-hi)', fontSize: 15 }}>Accepting Q3 2026 engagements</span>
           </div>
           <div style={{ display: 'flex', gap: 4, marginBottom: 10 }}>
-            {[1,1,1,1,0,0].map((v, i) => (
+            {[1, 1, 1, 1, 0, 0].map((v, i) => (
               <div key={i} style={{ flex: 1, height: 6, background: v ? 'var(--cobalt)' : 'var(--line-2)' }} />
             ))}
           </div>

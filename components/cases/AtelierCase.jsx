@@ -106,7 +106,7 @@ const AtelierCase = () => {
       <section className="section" style={{ background: 'var(--graphite)' }}>
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">§ 01 / BRIEF</div>
+            <div className="eyebrow">THE BRIEF</div>
             <div>
               <h2 className="display h2" style={{ marginBottom: 20 }}>The problem.</h2>
               <p style={{ fontSize: 17, color: 'var(--titanium-2)', lineHeight: 1.7, maxWidth: 680, marginBottom: 16 }}>
@@ -127,7 +127,7 @@ const AtelierCase = () => {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">§ 02 / ARCHITECTURE</div>
+            <div className="eyebrow">ARCHITECTURE</div>
             <div><h2 className="display h2" style={{ marginBottom: 16 }}>System topology.</h2></div>
           </div>
           <div style={{ border: '1px solid var(--line-2)', padding: isMobile ? 20 : 40, background: 'var(--graphite-2)' }}>
@@ -168,7 +168,7 @@ const AtelierCase = () => {
       <section className="section" style={{ background: 'var(--graphite)' }}>
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">§ 03 / DECISIONS</div>
+            <div className="eyebrow">KEY DECISIONS</div>
             <div><h2 className="display h2" style={{ marginBottom: 16 }}>Architecture decisions.</h2></div>
           </div>
           <div style={{ border: '1px solid var(--line-2)' }}>
@@ -200,7 +200,7 @@ const AtelierCase = () => {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">§ 04 / STACK</div>
+            <div className="eyebrow">TECH STACK</div>
             <div><h2 className="display h2">Technologies used.</h2></div>
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>

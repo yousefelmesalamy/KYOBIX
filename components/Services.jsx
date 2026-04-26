@@ -1,33 +1,33 @@
 const SERVICES = [
   {
     id: '01',
-    title: 'Front-End Architecture',
-    desc: 'High-performance single-page applications and complex data dashboards. Deep Angular specialization with state-machine rigor.',
-    tags: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'NgRx'],
+    title: 'High-Performance UI',
+    desc: 'We architect atomic design systems and sub-second rendering for complex, data-heavy web applications. We eliminate technical debt at the UI layer to ensure your frontend scales with your business.',
+    tags: ['Atomic Design', 'Performance', 'Real-time', 'Data-heavy', 'Mobile-ready'],
   },
   {
     id: '02',
-    title: 'Custom SaaS Development',
-    desc: 'Resilient, purpose-built software products tailored to specific business operations and domain logic. Multi-tenant from day one.',
-    tags: ['PostgreSQL', 'Node', 'Auth', 'Billing', 'Audit'],
+    title: 'Distributed Systems',
+    desc: 'Building bulletproof, multi-tenant cloud architectures designed for high-concurrency and mission-critical reliability. We engineer the core engines that power global $100M+ operations.',
+    tags: ['Multi-tenant', 'Scalability', 'Security', 'Cloud-Native', 'Resilience'],
   },
   {
     id: '03',
-    title: 'Digital Infrastructure & Integration',
-    desc: 'Bridging backend databases, APIs, and hardware systems with seamless interfaces. Where legacy meets contemporary.',
-    tags: ['REST', 'GraphQL', 'ETL', 'Webhooks', 'Queue'],
+    title: 'Ecosystem Orchestration',
+    desc: 'Unifying fragmented technical stacks through robust middleware and custom API bridges. We enable real-time data synchronization across your mission-critical technical ecosystem.',
+    tags: ['API Design', 'Data Sync', 'Legacy Integration', 'Automation', 'Migrations'],
   },
   {
     id: '04',
-    title: 'Enterprise E-Commerce Systems',
-    desc: 'Robust, scalable sales and inventory platforms for high-volume retail and luxury brands. Structured for six-figure cart density.',
-    tags: ['Commerce', 'Inventory', 'Checkout', 'ERP', 'PIM'],
+    title: 'Headless Commerce',
+    desc: 'High-volume retail engines engineered for global performance, bespoke inventory logic, and checkout flows. Optimized for extreme scale during peak global demand.',
+    tags: ['Checkout', 'Inventory', 'Global Search', 'Payments', 'Performance'],
   },
   {
     id: '05',
-    title: 'Technical Blueprinting',
-    desc: 'High-level system design and architectural consulting for digital transformation. Decisions documented to withstand audits and acquisitions.',
-    tags: ['C4', 'ADR', 'RFC', 'Threat Model', 'SLA'],
+    title: 'Architecture Audits',
+    desc: 'Deep-dive technical risk assessments and incremental modernization strategies. We provide the blueprint for long-term system health and successful technical asset transfer.',
+    tags: ['ADRs', 'Roadmaps', 'Risk Analysis', 'Documentation', 'Handover'],
   },
 ];
 
@@ -40,16 +40,15 @@ const Services = () => {
       <div className="container">
         <div className="section-head">
           <div>
-            <div className="eyebrow">§ 01 / SCOPE</div>
+            <div className="eyebrow">WHAT WE DO</div>
           </div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
-              Five disciplines.<br />
-              <span style={{ color: 'var(--titanium-2)' }}>One architectural practice.</span>
+              What we build<span style={{ color: 'var(--titanium-2)' }}>.</span>
             </h2>
             <p style={{ maxWidth: 620, fontSize: 17, color: 'var(--titanium-2)' }}>
-              We do not generalize. Each discipline below represents a dedicated practice
-              with its own standards, tooling, and measurable outputs.
+              Five areas of focus. Each one delivers working software
+              that solves a specific business problem.
             </p>
           </div>
         </div>

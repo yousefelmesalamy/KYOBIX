@@ -37,7 +37,7 @@ const EngineeringLogHero = () => {
     <section id="top" style={{ paddingTop: 64, borderBottom: '1px solid var(--line)' }}>
       <div className="container">
         <div style={{ paddingTop: isMobile ? 24 : 40, paddingBottom: isMobile ? 28 : 48, borderBottom: '1px solid var(--line)', marginBottom: isMobile ? 28 : 56, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div className="mono" style={{ color: 'var(--titanium-3)', fontSize: 10 }}>§ EL / ENGINEERING LOG — KYOBIX.ARCHITECTURE</div>
+          <div className="mono" style={{ color: 'var(--titanium-3)', fontSize: 10 }}>ENGINEERING LOG — KYOBIX</div>
           {!isMobile && <div className="mono" style={{ color: 'var(--titanium-3)', fontSize: 10 }}>{ARTICLES.length} ENTRIES</div>}
         </div>
         <div className="eyebrow" style={{ marginBottom: 24 }}>Engineering Log</div>

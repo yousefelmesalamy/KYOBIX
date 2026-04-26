@@ -40,14 +40,14 @@ const DECISIONS = [
   },
   {
     title: 'Angular standalone components over modules',
-    chosen: 'Angular 17 Standalone',
+    chosen: 'Angular Standalone',
     rejected: 'NgModules',
     rationale: 'The client\'s team had an existing Angular codebase with deep NgModule patterns. Standalone components allowed gradual migration without forking, and reduced initial bundle size by 34% through tree-shaking.',
     outcome: 'Initial bundle: 187kb gzipped. LCP: 1.1s on 4G.',
   },
 ];
 
-const STACK = ['Angular 17', 'TypeScript', 'RxJS', 'Node.js', 'ClickHouse', 'Redis', 'WebSocket', 'Docker', 'Kubernetes', 'OpenTelemetry', 'Prometheus', 'Grafana', 'GCP', 'Terraform'];
+const STACK = ['Angular', 'TypeScript', 'RxJS', 'Node.js', 'ClickHouse', 'Redis', 'WebSocket', 'Docker', 'Kubernetes', 'OpenTelemetry', 'Prometheus', 'Grafana', 'GCP', 'Terraform'];
 
 const MeridianCase = () => {
   const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
@@ -105,7 +105,7 @@ const MeridianCase = () => {
       <section className="section" style={{ background: 'var(--graphite)' }}>
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">§ 01 / BRIEF</div>
+            <div className="eyebrow">THE BRIEF</div>
             <div>
               <h2 className="display h2" style={{ marginBottom: 20 }}>The problem.</h2>
               <p style={{ fontSize: 17, color: 'var(--titanium-2)', lineHeight: 1.7, maxWidth: 680, marginBottom: 16 }}>
@@ -126,37 +126,37 @@ const MeridianCase = () => {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">§ 02 / ARCHITECTURE</div>
+            <div className="eyebrow">ARCHITECTURE</div>
             <div><h2 className="display h2" style={{ marginBottom: 16 }}>System topology.</h2></div>
           </div>
           <div style={{ border: '1px solid var(--line-2)', padding: isMobile ? 20 : 40, background: 'var(--graphite-2)' }}>
             <svg viewBox="0 0 700 280" width="100%" style={{ display: 'block' }}>
               <defs>
                 <pattern id="m-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(216,220,226,0.04)" strokeWidth="0.5"/>
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(216,220,226,0.04)" strokeWidth="0.5" />
                 </pattern>
               </defs>
-              <rect width="700" height="280" fill="url(#m-grid)"/>
+              <rect width="700" height="280" fill="url(#m-grid)" />
               {/* Nodes */}
               {[
-                { x: 20,  y: 100, w: 110, h: 50, label: 'VEHICLE\nSENSORS', color: 'rgba(216,220,226,0.08)' },
-                { x: 180, y: 80,  w: 120, h: 70, label: 'NODE.JS\nWEBSOCKET', color: 'rgba(42,83,255,0.1)', accent: true },
-                { x: 350, y: 80,  w: 120, h: 70, label: 'REDIS\nPUB/SUB', color: 'rgba(216,220,226,0.06)' },
-                { x: 520, y: 60,  w: 120, h: 50, label: 'CLICKHOUSE\nTIME-SERIES', color: 'rgba(62,213,152,0.08)' },
+                { x: 20, y: 100, w: 110, h: 50, label: 'VEHICLE\nSENSORS', color: 'rgba(216,220,226,0.08)' },
+                { x: 180, y: 80, w: 120, h: 70, label: 'NODE.JS\nWEBSOCKET', color: 'rgba(42,83,255,0.1)', accent: true },
+                { x: 350, y: 80, w: 120, h: 70, label: 'REDIS\nPUB/SUB', color: 'rgba(216,220,226,0.06)' },
+                { x: 520, y: 60, w: 120, h: 50, label: 'CLICKHOUSE\nTIME-SERIES', color: 'rgba(62,213,152,0.08)' },
                 { x: 520, y: 130, w: 120, h: 50, label: 'ANGULAR\nDASHBOARD', color: 'rgba(42,83,255,0.08)' },
               ].map((n, i) => (
                 <g key={i}>
-                  <rect x={n.x} y={n.y} width={n.w} height={n.h} fill={n.color} stroke={n.accent ? 'rgba(42,83,255,0.4)' : 'rgba(216,220,226,0.12)'} strokeWidth="1"/>
+                  <rect x={n.x} y={n.y} width={n.w} height={n.h} fill={n.color} stroke={n.accent ? 'rgba(42,83,255,0.4)' : 'rgba(216,220,226,0.12)'} strokeWidth="1" />
                   {n.label.split('\n').map((line, li) => (
-                    <text key={li} x={n.x + n.w/2} y={n.y + 20 + li * 16} textAnchor="middle" fill="rgba(200,205,212,0.7)" fontFamily="'Geist Mono',monospace" fontSize="9" letterSpacing="0.06em">{line}</text>
+                    <text key={li} x={n.x + n.w / 2} y={n.y + 20 + li * 16} textAnchor="middle" fill="rgba(200,205,212,0.7)" fontFamily="'Geist Mono',monospace" fontSize="9" letterSpacing="0.06em">{line}</text>
                   ))}
                 </g>
               ))}
               {/* Arrows */}
-              <line x1="130" y1="125" x2="178" y2="115" stroke="rgba(139,144,153,0.4)" strokeWidth="1" strokeDasharray="4 3"/>
-              <line x1="300" y1="115" x2="348" y2="115" stroke="rgba(42,83,255,0.5)" strokeWidth="1.5"/>
-              <line x1="470" y1="100" x2="518" y2="90" stroke="rgba(62,213,152,0.4)" strokeWidth="1" strokeDasharray="4 3"/>
-              <line x1="470" y1="125" x2="518" y2="150" stroke="rgba(42,83,255,0.4)" strokeWidth="1"/>
+              <line x1="130" y1="125" x2="178" y2="115" stroke="rgba(139,144,153,0.4)" strokeWidth="1" strokeDasharray="4 3" />
+              <line x1="300" y1="115" x2="348" y2="115" stroke="rgba(42,83,255,0.5)" strokeWidth="1.5" />
+              <line x1="470" y1="100" x2="518" y2="90" stroke="rgba(62,213,152,0.4)" strokeWidth="1" strokeDasharray="4 3" />
+              <line x1="470" y1="125" x2="518" y2="150" stroke="rgba(42,83,255,0.4)" strokeWidth="1" />
               {/* Labels */}
               <text x="350" y="260" textAnchor="middle" fill="rgba(90,95,104,0.5)" fontFamily="'Geist Mono',monospace" fontSize="8" letterSpacing="0.08em">FIG.03 — MERIDIAN LOGISTICS SYSTEM TOPOLOGY · K-001</text>
             </svg>
@@ -168,17 +168,17 @@ const MeridianCase = () => {
       <section className="section" style={{ background: 'var(--graphite)' }}>
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">§ 03 / DECISIONS</div>
+            <div className="eyebrow">KEY DECISIONS</div>
             <div><h2 className="display h2" style={{ marginBottom: 16 }}>Architecture decisions.</h2>
-            <p style={{ maxWidth: 480, fontSize: 17, color: 'var(--titanium-2)' }}>Three key choices with their rationale, documented as ADRs.</p></div>
+              <p style={{ maxWidth: 480, fontSize: 17, color: 'var(--titanium-2)' }}>Three key choices with their rationale, documented as ADRs.</p></div>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 0, border: '1px solid var(--line-2)' }}>
             {DECISIONS.map((d, i) => (
-              <div key={i} className="framed" style={{ padding: isMobile ? 24 : 36, borderBottom: i < DECISIONS.length-1 ? '1px solid var(--line-2)' : 'none', background: 'var(--graphite-2)' }}>
-                {i === 0 && <span className="tick-tr"/>}
+              <div key={i} className="framed" style={{ padding: isMobile ? 24 : 36, borderBottom: i < DECISIONS.length - 1 ? '1px solid var(--line-2)' : 'none', background: 'var(--graphite-2)' }}>
+                {i === 0 && <span className="tick-tr" />}
                 <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 16 : 32 }}>
                   <div>
-                    <div className="mono" style={{ color: 'var(--cobalt)', marginBottom: 12, fontSize: 10 }}>ADR-{String(i+1).padStart(3,'0')}</div>
+                    <div className="mono" style={{ color: 'var(--cobalt)', marginBottom: 12, fontSize: 10 }}>ADR-{String(i + 1).padStart(3, '0')}</div>
                     <div className="display" style={{ fontSize: isMobile ? 18 : 22, fontWeight: 500, color: 'var(--titanium-hi)', marginBottom: 16 }}>{d.title}</div>
                     <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 8 }}>
                       <span className="mono" style={{ fontSize: 10, padding: '3px 8px', background: 'rgba(42,83,255,0.1)', color: 'var(--cobalt)', border: '1px solid rgba(42,83,255,0.2)' }}>✓ {d.chosen}</span>
@@ -202,7 +202,7 @@ const MeridianCase = () => {
       <section className="section">
         <div className="container">
           <div className="section-head">
-            <div className="eyebrow">§ 04 / STACK</div>
+            <div className="eyebrow">TECH STACK</div>
             <div><h2 className="display h2">Technologies used.</h2></div>
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>

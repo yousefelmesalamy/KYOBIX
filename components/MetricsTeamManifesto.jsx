@@ -57,10 +57,10 @@ const Metrics = () => {
     <section className="section" style={{ borderTop: '1px solid var(--line)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 04 / PROOF</div>
+          <div className="eyebrow">BY THE NUMBERS</div>
           <div>
             <h2 className="display h2">
-              Measured<br />output.
+              Results<br />that matter.
             </h2>
           </div>
         </div>
@@ -71,10 +71,10 @@ const Metrics = () => {
           border: '1px solid var(--line-2)',
         }}>
           {[
-            { label: 'SYSTEMS SHIPPED', value: 23, suffix: '+', note: 'Across fintech, retail, logistics.' },
-            { label: 'MEDIAN P95 LOAD', value: 0.42, decimals: 2, suffix: 's', note: 'Below industry benchmark by 3.1×.' },
-            { label: 'UPTIME SLA MET', value: 99.98, decimals: 2, suffix: '%', note: 'Rolling 12-month average.' },
-            { label: 'CLIENT RETENTION', value: 100, suffix: '%', note: 'Every engagement renewed or expanded.' },
+            { label: 'CAPITAL SECURED', value: 14.2, decimals: 1, prefix: '$', suffix: 'M', note: 'Aggregate client ROI recovered.' },
+            { label: 'SYSTEM RESILIENCE', value: 99.99, decimals: 2, suffix: '%', note: 'Consistent mission-critical uptime.' },
+            { label: 'TECH DEBT WIPED', value: 8.4, decimals: 1, prefix: '$', suffix: 'M+', note: 'Estimated legacy cost mitigation.' },
+            { label: 'RETENTION RATE', value: 100, suffix: '%', note: 'Every engagement renewed.' },
           ].map((m, i) => {
             const isLastInRow = cols === 4 ? i === 3 : cols === 2 ? i % 2 === 1 : true;
             const isFirstRow = cols === 2 ? i < 2 : false;
@@ -111,15 +111,15 @@ const Team = () => {
     <section id="team" className="section" style={{ background: 'var(--graphite)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 05 / PRACTICE</div>
+          <div className="eyebrow">OUR TEAM</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
-              Six engineers.<br />
-              <span style={{ color: 'var(--titanium-2)' }}>Four timezones.</span>
+              Senior principals.<br />
+              <span style={{ color: 'var(--titanium-2)' }}>No handovers.</span>
             </h2>
             <p style={{ maxWidth: 620, fontSize: 17, color: 'var(--titanium-2)' }}>
-              Small by design. Every engagement is led by a principal; there is no
-              bench, no junior resourcing, no subcontracting. What you hire is what builds.
+              The engineer who scopes your project is the one who builds it.
+              Small by design, senior by default. No juniors, no outsourcing, no friction.
             </p>
           </div>
         </div>
@@ -187,11 +187,11 @@ const Team = () => {
 
 // ====== Manifesto ======
 const TENETS = [
-  ['We refuse the false dichotomy', 'between speed and craft. Disciplined engineering is faster.'],
-  ['We document decisions', 'as rigorously as we write code. The why outlives the what.'],
-  ['We build for the audit', 'not the demo. Observability, not optics.'],
-  ['We say no early', 'and often. Scope that violates physics is not scope.'],
-  ['We own the boundary', 'between business logic and systems — that is the bridge.'],
+  ['We plan before we build', 'Every system starts with a comprehensive blueprint. This eliminates architectural drift and technical debt before it happens.'],
+  ['We document everything', 'We deliver working software plus the internal documentation (ADRs, schemas, flowcharts) your team needs to own it forever.'],
+  ['We build for real load', 'Our systems are stress-tested for your peak traffic events. We build for production stability, not for demo-day optics.'],
+  ['We communicate with precision', 'No jargon, no fluff. We provide weekly high-fidelity reports that link technical progress directly to business objectives.'],
+  ['The Principal-Only Guarantee', 'You will never be handed off to a junior associate or account manager. The principal who architects your system is the one who executes it.'],
 ];
 
 const Manifesto = () => {
@@ -201,11 +201,11 @@ const Manifesto = () => {
     <section id="manifesto" className="section">
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 06 / DOCTRINE</div>
+          <div className="eyebrow">OUR COMMITMENTS</div>
           <div>
             <h2 className="display h2">
-              Five<br />
-              commitments.
+              Engineering<br />
+              standards.
             </h2>
           </div>
         </div>
@@ -241,6 +241,144 @@ const Manifesto = () => {
   );
 };
 
+// ====== Client Results / ROI ======
+const CLIENT_RESULTS = [
+  {
+    tag: 'LOGISTICS · INTELLIGENCE',
+    client: 'Meridian Global Logistics',
+    problem: 'Fragmented data across 14 global hubs was causing 20% inventory slippage and massive manual overhead.',
+    metrics: [
+      { label: 'ANNUAL EFFICIENCY', value: 1.2, decimals: 1, prefix: '$', suffix: 'M', note: 'Operational ROI' },
+      { label: 'INVENTORY SLIPPAGE', value: 20, suffix: '% reduction', note: 'Live SKU telemetry' },
+      { label: 'DECISION LATENCY', value: 67, suffix: '% faster', note: 'Real-time intelligence' },
+    ],
+    outcome: 'Engineered an Intelligence Engine unifying 2,400 SKUs into a high-performance operational cockpit.',
+  },
+  {
+    tag: 'HIGH-TICKET · E-COMMERCE',
+    client: 'Atelier Noire',
+    problem: 'Legacy monolithic architecture was failing during peak global sales, costing $400k/mo in abandoned carts.',
+    metrics: [
+      { label: 'MONTHLY RECOVERY', value: 400, suffix: 'k', prefix: '$', note: 'Reclaimed revenue' },
+      { label: 'CONVERSION LIFT', value: 41, suffix: '% lift', note: 'For orders >$10k' },
+      { label: 'LCP IMPROVEMENT', value: 78, suffix: '%', note: '0.9s global median' },
+    ],
+    outcome: 'Custom Headless Commerce Engine optimized for high-AOV transactions and global stability.',
+  },
+  {
+    tag: 'FINTECH · GOVERNANCE',
+    client: 'Series B Fintech',
+    problem: 'Rapid team scaling led to architecture drift and $2M+ in projected maintenance and technical debt.',
+    metrics: [
+      { label: 'TECH DEBT MITIGATED', value: 2.4, decimals: 1, prefix: '$', suffix: 'M', note: 'Valuation protection' },
+      { label: 'ENGINEERING VELOCITY', value: 3, suffix: '×', note: 'Productivity increase' },
+      { label: 'ONBOARDING SAVED', value: 80, suffix: '%', note: 'Efficiency gain' },
+    ],
+    outcome: 'Established a Technical Governance Framework that scaled the engineering team 3× without debt.',
+  },
+];
+
+const ResultMetric = ({ metric: m, isLast }) => {
+  const [v, ref] = useCounter(m.value, 1200);
+  const display = m.prefix ? `${m.prefix}${v.toFixed(m.decimals || 0)}` : v.toFixed(m.decimals || 0);
+  return (
+    <div ref={ref} style={{
+      padding: '16px 18px',
+      borderBottom: isLast ? 'none' : '1px solid var(--line-2)',
+    }}>
+      <div className="mono" style={{ color: 'var(--titanium-3)', fontSize: 10, marginBottom: 8 }}>{m.label}</div>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+        <div className="display" style={{ fontSize: 36, fontWeight: 500, color: 'var(--titanium-hi)', letterSpacing: '-0.04em', lineHeight: 1 }}>
+          {display}
+        </div>
+        {m.suffix && <div className="mono" style={{ color: 'var(--cobalt)', fontSize: 12 }}>{m.suffix}</div>}
+      </div>
+      <div style={{ fontSize: 12, color: 'var(--titanium-2)', marginTop: 6 }}>{m.note}</div>
+    </div>
+  );
+};
+
+const ClientResults = () => {
+  const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
+  const cols = isMobile ? 1 : isTablet ? 1 : 3;
+
+  return (
+    <section className="section" style={{ background: 'var(--graphite)' }}>
+      <div className="container">
+        <div className="section-head">
+          <div className="eyebrow">CLIENT OUTCOMES</div>
+          <div>
+            <h2 className="display h2" style={{ marginBottom: 20 }}>
+              Real results<span style={{ color: 'var(--titanium-2)' }}>.</span>
+            </h2>
+            <p style={{ maxWidth: 560, fontSize: 17, color: 'var(--titanium-2)' }}>
+              What our clients gained — measured in production, not projections.
+            </p>
+          </div>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${cols}, 1fr)`,
+          border: '1px solid var(--line-2)',
+        }}>
+          {CLIENT_RESULTS.map((r, ri) => {
+            const isLast = ri === CLIENT_RESULTS.length - 1;
+            return (
+              <div key={r.tag} style={{
+                padding: isMobile ? 24 : 32,
+                borderRight: (!isMobile && !isTablet && !isLast) ? '1px solid var(--line-2)' : 'none',
+                borderBottom: (isMobile || isTablet) && !isLast ? '1px solid var(--line-2)' : 'none',
+                background: 'var(--graphite-2)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 24,
+                transition: 'background 200ms',
+              }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(42,83,255,0.04)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'var(--graphite-2)'}
+              >
+                <div>
+                  <div className="mono" style={{ color: 'var(--cobalt)', marginBottom: 10 }}>{r.tag}</div>
+                  <div className="display" style={{ fontSize: isMobile ? 22 : 26, fontWeight: 500, color: 'var(--titanium-hi)', marginBottom: 8 }}>
+                    {r.client}
+                  </div>
+                  <p style={{ fontSize: 14, color: 'var(--titanium-2)', lineHeight: 1.5 }}>{r.problem}</p>
+                </div>
+
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr',
+                  gap: 0,
+                  border: '1px solid var(--line-2)',
+                }}>
+                  {r.metrics.map((m, mi) => {
+                    const isLastMetric = mi === r.metrics.length - 1;
+                    return (
+                      <ResultMetric key={m.label} metric={m} isLast={isLastMetric} />
+                    );
+                  })}
+                </div>
+
+                <div style={{
+                  paddingTop: 16,
+                  borderTop: '1px solid var(--line-2)',
+                  fontSize: 14,
+                  color: 'var(--titanium)',
+                  lineHeight: 1.5,
+                }}>
+                  {r.outcome}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 window.Metrics = Metrics;
 window.Team = Team;
 window.Manifesto = Manifesto;
+window.ClientResults = ClientResults;

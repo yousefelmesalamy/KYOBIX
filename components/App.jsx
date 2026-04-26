@@ -99,23 +99,25 @@ const App = () => {
       <main>
         <Hero />
         <Services />
+        <WhoWeWorkWith />
         <Process />
         <CaseStudies />
         <Metrics />
         <Testimonials />
+        <ClientResults />
         <Manifesto />
         <FAQ />
         <Contact />
       </main>
       <Footer />
       {showSticky && (
-        <a href="#contact" className="btn btn-primary" style={{
+        <a href="https://cal.com/kyobix/30min?overlayCalendar=true" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{
           position: 'fixed', bottom: 28, right: 28, zIndex: 150,
           fontSize: 11, padding: '10px 18px',
           boxShadow: '0 0 24px var(--cobalt-glow)',
           animation: 'page-in 300ms ease both',
         }}>
-          Engage <span className="arrow">→</span>
+          Schedule Technical Audit <span className="arrow">→</span>
         </a>
       )}
     </window.BreakpointContext.Provider>

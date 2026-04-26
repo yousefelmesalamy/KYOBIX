@@ -2,42 +2,42 @@ const PROCESS_PHASES = [
   {
     id: '00',
     name: 'DISCOVERY',
-    label: 'Blueprint',
+    label: 'Architecture Review',
     duration: '1–2 WKS',
-    output: 'System diagram, RFCs, risk register',
-    desc: 'We interrogate the problem before proposing a solution. Stakeholder interviews, constraint mapping, architectural decision records.',
+    output: 'Technical roadmap & risk mitigation brief',
+    desc: 'We audit your current stack, interview key stakeholders, and define the critical technical requirements that map directly to your business KPIs.',
   },
   {
     id: '01',
-    name: 'ARCHITECTURE',
-    label: 'Design',
+    name: 'DESIGN',
+    label: 'Engineering Blueprint',
     duration: '2–4 WKS',
-    output: 'C4 model, API contracts, data schema',
-    desc: 'Formal system design documented at four levels: context, container, component, code. Every edge case named before a line is written.',
+    output: 'System design & ADR library',
+    desc: 'We map the full data architecture and API contracts before a single line of code is written. You receive a complete library of Architecture Decision Records (ADRs).',
   },
   {
     id: '02',
-    name: 'CONSTRUCTION',
-    label: 'Build',
+    name: 'BUILD',
+    label: 'Core Implementation',
     duration: '8–20 WKS',
-    output: 'Working system, full test coverage',
-    desc: 'Iterative delivery in two-week cycles. Continuous integration, automated testing, weekly architecture reviews with your team.',
+    output: 'Production-ready software assets',
+    desc: 'Engineered for performance. We execute in two-week cycles with frequent demonstrations, ensuring the build aligns with the blueprint at every stage.',
   },
   {
     id: '03',
-    name: 'HARDENING',
-    label: 'Scale',
+    name: 'VALIDATION',
+    label: 'Observability Hardening',
     duration: '2–3 WKS',
-    output: 'Performance baseline, runbooks',
-    desc: 'Load testing, observability wiring, disaster recovery. We hand over a system that withstands Black Friday on day one.',
+    output: 'Stress tests & monitoring suite',
+    desc: 'We subject the system to global load-testing and harden observability. We ensure your infrastructure handles P95 spikes without performance degradation.',
   },
   {
     id: '04',
-    name: 'HANDOVER',
-    label: 'Transition',
+    name: 'TRANSFER',
+    label: 'Principal Advisory',
     duration: 'ONGOING',
-    output: 'Documentation, team training',
-    desc: 'Your team owns the system when we leave. Retained advisory available — we prefer it that way. Clean boundaries.',
+    output: 'Documented asset transfer',
+    desc: 'Full ownership transfer of all code and documentation. We remain available as fractional principal advisors to ensure your team scales successfully.',
   },
 ];
 
@@ -49,15 +49,15 @@ const Process = () => {
     <section id="process" className="section" style={{ background: 'var(--graphite)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 02 / METHOD</div>
+          <div className="eyebrow">HOW WE WORK</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
-              A five-phase<br />
-              engagement model.
+              How every<br />
+              project works.
             </h2>
             <p style={{ maxWidth: 620, fontSize: 17, color: 'var(--titanium-2)' }}>
-              Predictable timelines. Documented decisions. No surprises at the
-              30% mark, no surprises at the 90% mark.
+              Five phases. Clear timelines. You know what's happening
+              and what you're getting at every step.
             </p>
           </div>
         </div>

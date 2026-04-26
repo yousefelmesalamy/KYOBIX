@@ -49,7 +49,7 @@ const Hero = () => {
       }}>
         {/* Top coordinate strip */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
-          <span className="mono">§ 00 / INDEX — KYOBIX.ARCHITECTURE</span>
+          <span className="mono">KYOBIX.ARCHITECTURE</span>
           {!isMobile && (
             <span className="mono" style={{ color: 'var(--titanium-3)' }}>
               LAT 37.5665°N  LON 126.9780°E  ·  EST. 2026
@@ -66,13 +66,13 @@ const Hero = () => {
         }}>
           <div>
             <div className="eyebrow" style={{ marginBottom: 32 }}>
-              <span>High-End Software Architecture</span>
+              <span>High-End Software Architecture & Engineering</span>
             </div>
             <h1 className="display h1" style={{ marginBottom: 32 }}>
-              Engineering<br />
-              the Digital<br />
+              Engineering the<br />
+              systems that handle<br />
               <span style={{ position: 'relative', display: 'inline-block' }}>
-                Bridge<span style={{
+                your highest risk<span style={{
                   color: 'var(--cobalt)',
                   display: 'inline-block',
                   marginLeft: '0.1em',
@@ -86,15 +86,16 @@ const Hero = () => {
               maxWidth: 520,
               marginBottom: 40,
             }}>
-              We architect the exact connection point where complex business logic meets
-              seamless, high-performance software. Precision systems for enterprise scale.
+              We architect and build high-performance infrastructure for organizations where 
+              system failure is not an option. Principal-only execution for 
+              mission-critical scale and strategic legacy modernization.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <a href="#contact" className="btn btn-primary">
-                Commission a build <span className="arrow">→</span>
+              <a href="https://cal.com/kyobix/30min?overlayCalendar=true" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                Schedule a Technical Audit <span className="arrow">→</span>
               </a>
               <a href="#work" className="btn">
-                View casework
+                View industrial casework
               </a>
             </div>
           </div>
@@ -111,9 +112,9 @@ const Hero = () => {
           borderTop: '1px solid var(--line)',
         }}>
           {[
-            ['SERVICES', '05 disciplines'],
-            ['SPECIALIZATION', 'Angular · SaaS · E-commerce'],
-            ['DELIVERY', 'Blueprint → Build → Scale'],
+            ['SERVICES', '05 core areas'],
+            ['FOCUS', 'SaaS · Commerce · Dashboards'],
+            ['DELIVERY', 'Design → Build → Launch'],
             ['ENGAGEMENT', 'Fixed scope · Retainer · Advisory'],
           ].map(([k, v]) => (
             <div key={k}>
