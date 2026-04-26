@@ -167,7 +167,7 @@ const Nav = () => {
             <a href="https://cal.com/kyobix/30min?overlayCalendar=true" target="_blank" rel="noopener noreferrer" className="btn btn-primary"
               onClick={() => setMenuOpen(false)}
             style={{ marginTop: 24, alignSelf: 'flex-start', fontSize: 11 }}>
-            Schedule a Call <span className="arrow">→</span>
+            Initiate strategic review <span className="arrow">→</span>
           </a>
         </div>
       )}
