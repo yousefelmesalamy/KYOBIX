@@ -5,7 +5,15 @@ const Nav = () => {
   const { isMobile, isTablet } = React.useContext(window.BreakpointContext);
   const isMobileNav = isMobile || isTablet;
   const isAboutPage = window.location.pathname.includes('about');
-  const pagePrefix = isAboutPage ? 'index.html' : '';
+  const isInvestmentPage = window.location.pathname.includes('investment');
+  const pagePrefix = (isAboutPage || isInvestmentPage) ? 'index.html' : '';
+
+  const navigate = (href) => (e) => {
+    if (!href.includes('.html') && !href.includes('index.html')) return;
+    e.preventDefault();
+    document.body.classList.add('page-out');
+    setTimeout(() => { window.location.href = href; }, 260);
+  };
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -42,7 +50,7 @@ const Nav = () => {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         height: 64,
       }}>
-        <a href={isAboutPage ? 'index.html' : '#top'} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <a href={isAboutPage || isInvestmentPage ? 'index.html' : '#top'} onClick={navigate(isAboutPage || isInvestmentPage ? 'index.html' : '')} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <LogoMark size={20} />
           <span style={{
             fontFamily: 'var(--f-display)',
@@ -57,13 +65,14 @@ const Nav = () => {
         {!isMobileNav && (
           <nav style={{ display: 'flex', gap: 36, alignItems: 'center' }}>
             {[
-              ['Services', `${pagePrefix}#services`],
-              ['Process',  `${pagePrefix}#process`],
-              ['Work',     `${pagePrefix}#work`],
-              ['Manifesto',`${pagePrefix}#manifesto`],
-              ['About',    'about.html'],
+              ['Services',   `${pagePrefix}#services`],
+              ['Process',    `${pagePrefix}#process`],
+              ['Work',       `${pagePrefix}#work`],
+              ['Manifesto',  `${pagePrefix}#manifesto`],
+              ['About',      'about.html'],
+              ['Investment', 'investment.html'],
             ].map(([label, href]) => (
-              <a key={href} href={href} className="mono" style={{
+              <a key={href} href={href} onClick={navigate(href)} className="mono" style={{
                 fontSize: 11,
                 color: 'var(--titanium-2)',
                 transition: 'color 150ms',
@@ -135,14 +144,15 @@ const Nav = () => {
           display: 'flex', flexDirection: 'column',
         }}>
           {[
-            ['Services', `${pagePrefix}#services`],
-            ['Process',  `${pagePrefix}#process`],
-            ['Work',     `${pagePrefix}#work`],
-            ['Manifesto',`${pagePrefix}#manifesto`],
-            ['About',    'about.html'],
+            ['Services',   `${pagePrefix}#services`],
+            ['Process',    `${pagePrefix}#process`],
+            ['Work',       `${pagePrefix}#work`],
+            ['Manifesto',  `${pagePrefix}#manifesto`],
+            ['About',      'about.html'],
+            ['Investment', 'investment.html'],
           ].map(([label, href]) => (
             <a key={href} href={href}
-              onClick={() => setMenuOpen(false)}
+              onClick={(e) => { setMenuOpen(false); navigate(href)(e); }}
               className="mono"
               style={{
                 fontSize: 13, color: 'var(--titanium-2)',
@@ -152,10 +162,10 @@ const Nav = () => {
                 transition: 'color 150ms',
               }}>
               {label}
-            </a>
-          ))}
-          <a href={isAboutPage ? 'index.html#contact' : '#contact'} className="btn btn-primary"
-            onClick={() => setMenuOpen(false)}
+              </a>
+            ))}
+            <a href={isAboutPage ? 'index.html#contact' : '#contact'} className="btn btn-primary"
+              onClick={() => setMenuOpen(false)}
             style={{ marginTop: 24, alignSelf: 'flex-start', fontSize: 11 }}>
             Engage <span className="arrow">→</span>
           </a>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #07090C;
+    font-family: 'Inter Tight', -apple-system, sans-serif;
+    position: relative;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(216,220,226,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(216,220,226,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .cobalt-glow {
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(42,83,255,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .border-bottom {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px; background: #2A53FF;
+  }
+  .content {
+    position: relative; z-index: 1;
+    padding: 64px 80px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .top-row {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo-row {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .logo-text {
+    font-weight: 600; font-size: 20px;
+    letter-spacing: 0.04em; color: #E6E9ED;
+  }
+  .tag {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px; letter-spacing: 0.1em;
+    color: #5A5F68; text-transform: uppercase;
+  }
+  .headline {
+    font-size: 88px; font-weight: 500;
+    letter-spacing: -0.04em; line-height: 0.9;
+    color: #E6E9ED;
+  }
+  .headline span { color: #2A53FF; }
+  .tagline {
+    font-family: 'Geist Mono', monospace;
+    font-size: 16px; color: #5A5F68;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    margin-top: 20px;
+  }
+  .bottom-row {
+    display: flex; align-items: flex-end; justify-content: space-between;
+  }
+  .url {
+    font-family: 'Geist Mono', monospace;
+    font-size: 14px; color: #2A53FF; letter-spacing: 0.04em;
+  }
+  .stats {
+    display: flex; gap: 40px;
+  }
+  .stat { text-align: right; }
+  .stat-val {
+    font-size: 28px; font-weight: 500;
+    letter-spacing: -0.03em; color: #E6E9ED;
+  }
+  .stat-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px; color: #5A5F68;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="cobalt-glow"></div>
+<div class="border-bottom"></div>
+
+<div class="content">
+  <div class="top-row">
+    <div class="logo-row">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <line x1="3" y1="3" x2="21" y2="21" stroke="#E6E9ED" stroke-width="2"/>
+        <line x1="21" y1="3" x2="3" y2="21" stroke="#2A53FF" stroke-width="2"/>
+      </svg>
+      <span class="logo-text">KYOBIX</span>
+    </div>
+    <span class="tag">EST. 2023 · SEOUL</span>
+  </div>
+
+  <div>
+    <div class="headline">
+      Engineering<br/>the Digital<br/>Bridge<span>.</span>
+    </div>
+    <div class="tagline">High-end software architecture · Six engagements per year</div>
+  </div>
+
+  <div class="bottom-row">
+    <span class="url">kyobix.io</span>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-val">23+</div>
+        <div class="stat-label">Systems shipped</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">100%</div>
+        <div class="stat-label">Client retention</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">6</div>
+        <div class="stat-label">Engagements / year</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

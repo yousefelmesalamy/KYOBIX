@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>404 — Kyobix</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none'%3E%3Cline x1='3' y1='3' x2='21' y2='21' stroke='%23E6E9ED' stroke-width='2'/%3E%3Cline x1='21' y1='3' x2='3' y2='21' stroke='%232A53FF' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<style>
+  @keyframes slow-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .spin-slow { animation: slow-spin 24s linear infinite; transform-origin: center; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="components/Breakpoint.jsx"></script>
+<script type="text/babel" src="components/Nav.jsx"></script>
+<script type="text/babel" src="components/ContactFooter.jsx"></script>
+<script type="text/babel">
+const NotFound = () => {
+  const { isMobile } = React.useContext(window.BreakpointContext);
+  return (
+    <section style={{
+      minHeight: '100vh', display: 'flex', alignItems: 'center',
+      justifyContent: 'center', flexDirection: 'column',
+      paddingTop: 64, gap: 48, textAlign: 'center',
+    }}>
+      <svg width={isMobile ? 120 : 180} height={isMobile ? 120 : 180} viewBox="0 0 120 120" fill="none" className="spin-slow">
+        <line x1="10" y1="10" x2="110" y2="110" stroke="var(--titanium-3)" strokeWidth="1.5"/>
+        <line x1="110" y1="10" x2="10" y2="110" stroke="var(--cobalt)" strokeWidth="1.5"/>
+        <circle cx="60" cy="60" r="55" stroke="var(--line-2)" strokeWidth="1" strokeDasharray="6 4"/>
+      </svg>
+      <div>
+        <div className="eyebrow" style={{ marginBottom: 20, justifyContent: 'center' }}>§ 404 / NOT FOUND</div>
+        <h1 className="display h2" style={{ marginBottom: 16 }}>
+          This page<br />doesn't exist<span style={{ color: 'var(--cobalt)' }}>.</span>
+        </h1>
+        <p style={{ color: 'var(--titanium-2)', fontSize: 17, maxWidth: 400, margin: '0 auto 36px' }}>
+          The URL you followed doesn't exist or has moved. Here's where you might want to go:
+        </p>
+        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <a href="index.html" className="btn btn-primary" style={{ fontSize: 12 }}>
+            Go home <span className="arrow">→</span>
+          </a>
+          <a href="about.html" className="btn" style={{ fontSize: 12 }}>About us</a>
+          <a href="index.html#contact" className="btn" style={{ fontSize: 12 }}>Engage</a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const NotFoundApp = () => {
+  const bp = window.useBreakpoints();
+  return (
+    <window.BreakpointContext.Provider value={bp}>
+      <Nav />
+      <NotFound />
+      <Footer />
+    </window.BreakpointContext.Provider>
+  );
+};
+ReactDOM.createRoot(document.getElementById('root')).render(<NotFoundApp />);
+</script>
+</body>
+</html>

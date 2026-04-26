@@ -278,3 +278,63 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .h2 { font-size: clamp(28px, 9vw, 44px); }
   .btn { font-size: 10px; padding: 12px 14px; }
 }
+
+/* ============================================================
+   Reading progress bar
+   ============================================================ */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--cobalt);
+  box-shadow: 0 0 8px var(--cobalt-glow);
+  z-index: 200;
+  pointer-events: none;
+  transition: width 80ms linear;
+}
+
+/* ============================================================
+   Page in / out transitions
+   ============================================================ */
+body { animation: page-in 380ms cubic-bezier(.2,.6,.2,1) both; }
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.page-out { animation: page-out 260ms cubic-bezier(.4,0,1,1) forwards !important; }
+@keyframes page-out {
+  to { opacity: 0; transform: translateY(-6px); }
+}
+
+/* ============================================================
+   Branded loading screen
+   ============================================================ */
+#loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 20px;
+  transition: opacity 450ms ease, visibility 450ms ease;
+}
+#loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-label {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--titanium-3);
+  text-transform: uppercase;
+}
+.loader-line-1 {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: loader-draw 900ms cubic-bezier(.6,0,.2,1) 100ms forwards;
+}
+.loader-line-2 {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: loader-draw 900ms cubic-bezier(.6,0,.2,1) 300ms forwards;
+}
+@keyframes loader-draw {
+  to { stroke-dashoffset: 0; }
+}

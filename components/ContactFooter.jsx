@@ -70,6 +70,22 @@ const Contact = () => {
               </div>
             </div>
 
+            <div style={{ marginBottom: 28, paddingTop: 24, borderTop: '1px solid var(--line)' }}>
+              <div className="mono" style={{ marginBottom: 10, color: 'var(--titanium-3)' }}>BOOK A CALL</div>
+              <a
+                href="https://cal.com/kyobix/30min?overlayCalendar=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{ fontSize: 11 }}
+              >
+                30-min scoping call <span className="arrow">→</span>
+              </a>
+              <div className="mono" style={{ marginTop: 8, fontSize: 10, color: 'var(--titanium-3)' }}>
+                FREE · NO COMMITMENT · PRINCIPAL ONLY
+              </div>
+            </div>
+
             <div style={{ marginTop: 'auto', paddingTop: 32, borderTop: '1px solid var(--line)' }}>
               <div className="mono" style={{ color: 'var(--titanium-3)', marginBottom: 10 }}>CURRENT CAPACITY</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -286,9 +302,9 @@ const Footer = () => {
           </div>
 
           {[
-            ['PRACTICE', [['Services', isAboutPage?'index.html#services':'#services'],['Process', isAboutPage?'index.html#process':'#process'],['Casework', isAboutPage?'index.html#work':'#work'],['Manifesto', isAboutPage?'index.html#manifesto':'#manifesto']]],
+            ['PRACTICE', [['Services', isAboutPage?'index.html#services':'#services'],['Process', isAboutPage?'index.html#process':'#process'],['Casework', isAboutPage?'index.html#work':'#work'],['Manifesto', isAboutPage?'index.html#manifesto':'#manifesto'],['Investment','investment.html']]],
             ['COMPANY', [['About','about.html'],['Careers','#'],['Press','#'],['Contact', isAboutPage?'index.html#contact':'#contact']]],
-            ['RESOURCES', [['Engineering log','#'],['Blueprints','#'],['Glossary','#'],['Reading list','#']]],
+            ['RESOURCES', [['Engineering log','engineering-log.html'],['Blueprints','#'],['Glossary','#'],['Reading list','#']]],
             ['LEGAL', [['MSA template','#'],['Security','#'],['Privacy','#'],['Terms','#']]],
           ].map(([head, items]) => (
             <div key={head}>

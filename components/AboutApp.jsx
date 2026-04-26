@@ -1,6 +1,11 @@
 const AboutApp = () => {
   const bp = window.useBreakpoints();
 
+  // Hide loader on mount
+  React.useEffect(() => {
+    document.getElementById('loader')?.classList.add('hidden');
+  }, []);
+
   const dotRef = React.useRef(null);
   const ringRef = React.useRef(null);
   React.useEffect(() => {
@@ -43,6 +48,17 @@ const AboutApp = () => {
     };
   }, []);
 
+  // Reading progress bar
+  const progressRef = React.useRef(null);
+  React.useEffect(() => {
+    const onScroll = () => {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      if (progressRef.current) progressRef.current.style.width = Math.min(pct * 100, 100) + '%';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   React.useEffect(() => {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -64,6 +80,7 @@ const AboutApp = () => {
 
   return (
     <window.BreakpointContext.Provider value={bp}>
+      <div ref={progressRef} className="progress-bar" />
       {showCursor && <div ref={dotRef} className="cursor-dot" />}
       {showCursor && <div ref={ringRef} className="cursor-ring" />}
       <Nav />

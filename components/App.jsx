@@ -1,6 +1,11 @@
 const App = () => {
   const bp = window.useBreakpoints();
 
+  // Hide loader on mount
+  React.useEffect(() => {
+    document.getElementById('loader')?.classList.add('hidden');
+  }, []);
+
   // Cursor
   const dotRef = React.useRef(null);
   const ringRef = React.useRef(null);
@@ -44,6 +49,27 @@ const App = () => {
     };
   }, []);
 
+  // Reading progress bar
+  const progressRef = React.useRef(null);
+  React.useEffect(() => {
+    const onScroll = () => {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+      if (progressRef.current) progressRef.current.style.width = Math.min(pct * 100, 100) + '%';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Sticky CTA
+  const [showSticky, setShowSticky] = React.useState(false);
+  React.useEffect(() => {
+    const onScroll = () => {
+      setShowSticky(window.scrollY / document.body.scrollHeight > 0.40);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   // Scroll reveals
   React.useEffect(() => {
     const obs = new IntersectionObserver((entries) => {
@@ -66,6 +92,7 @@ const App = () => {
 
   return (
     <window.BreakpointContext.Provider value={bp}>
+      <div ref={progressRef} className="progress-bar" />
       {showCursor && <div ref={dotRef} className="cursor-dot" />}
       {showCursor && <div ref={ringRef} className="cursor-ring" />}
       <Nav />
@@ -75,10 +102,22 @@ const App = () => {
         <Process />
         <CaseStudies />
         <Metrics />
+        <Testimonials />
         <Manifesto />
+        <FAQ />
         <Contact />
       </main>
       <Footer />
+      {showSticky && (
+        <a href="#contact" className="btn btn-primary" style={{
+          position: 'fixed', bottom: 28, right: 28, zIndex: 150,
+          fontSize: 11, padding: '10px 18px',
+          boxShadow: '0 0 24px var(--cobalt-glow)',
+          animation: 'page-in 300ms ease both',
+        }}>
+          Engage <span className="arrow">→</span>
+        </a>
+      )}
     </window.BreakpointContext.Provider>
   );
 };
