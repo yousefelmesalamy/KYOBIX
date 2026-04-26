@@ -1,43 +1,43 @@
 const PROCESS_PHASES = [
   {
     id: '00',
-    name: 'DISCOVERY',
-    label: 'Architecture Review',
-    duration: '1–2 WKS',
-    output: 'Technical roadmap & risk mitigation brief',
-    desc: 'We audit your current stack, interview key stakeholders, and define the critical technical requirements that map directly to your business KPIs.',
+    name: 'STRATEGIC AUDIT',
+    label: 'Root Cause Analysis',
+    duration: '2 WKS',
+    output: 'Systemic Risk Register & Architecture Roadmap',
+    desc: 'We perform an exhaustive audit of your current infrastructure, identifying the architectural bottlenecks that threaten your scalability. We define the high-stakes requirements that map to your commercial objectives.',
   },
   {
     id: '01',
-    name: 'DESIGN',
-    label: 'Engineering Blueprint',
-    duration: '2–4 WKS',
-    output: 'System design & ADR library',
-    desc: 'We map the full data architecture and API contracts before a single line of code is written. You receive a complete library of Architecture Decision Records (ADRs).',
+    name: 'SPECIFICATION',
+    label: 'Architectural Blueprint',
+    duration: '4 WKS',
+    output: 'Complete ADR Library & System Contracts',
+    desc: 'We architect the entire solution before a single line of application code is written. Every major technical decision is documented as an ADR, ensuring total transparency and long-term maintainability.',
   },
   {
     id: '02',
-    name: 'BUILD',
-    label: 'Core Implementation',
-    duration: '8–20 WKS',
-    output: 'Production-ready software assets',
-    desc: 'Engineered for performance. We execute in two-week cycles with frequent demonstrations, ensuring the build aligns with the blueprint at every stage.',
+    name: 'IMPLEMENTATION',
+    label: 'Principal Engineering',
+    duration: '12–24 WKS',
+    output: 'Production-Grade Software Assets',
+    desc: 'Led by a Principal Engineer, we build your core engines with a focus on modularity and high performance. We utilize contract-first development to ensure the implementation mirrors the architectural intent exactly.',
   },
   {
     id: '03',
-    name: 'VALIDATION',
-    label: 'Observability Hardening',
-    duration: '2–3 WKS',
-    output: 'Stress tests & monitoring suite',
-    desc: 'We subject the system to global load-testing and harden observability. We ensure your infrastructure handles P95 spikes without performance degradation.',
+    name: 'HARDENING',
+    label: 'Operational Resilience',
+    duration: '4 WKS',
+    output: 'Precision Observability & Fail-safe Suite',
+    desc: 'We subject the system to rigorous stress tests and harden its observability. We ensure your infrastructure is self-healing and can maintain performance targets under catastrophic load conditions.',
   },
   {
     id: '04',
-    name: 'TRANSFER',
-    label: 'Principal Advisory',
+    name: 'ADVISORY',
+    label: 'Asset Handover',
     duration: 'ONGOING',
-    output: 'Documented asset transfer',
-    desc: 'Full ownership transfer of all code and documentation. We remain available as fractional principal advisors to ensure your team scales successfully.',
+    output: 'Documented Transition & Strategic Advisory',
+    desc: 'We execute a complete ownership transfer of all code and documentation to your internal team. We remain available as fractional principal advisors to ensure the system evolves with your business strategy.',
   },
 ];
 
@@ -56,8 +56,8 @@ const Process = () => {
               project works.
             </h2>
             <p style={{ maxWidth: 620, fontSize: 17, color: 'var(--titanium-2)' }}>
-              Five phases. Clear timelines. You know what's happening
-              and what you're getting at every step.
+              We eliminate the uncertainty of high-stakes engineering through a clinical, five-phase framework. 
+              Our process is designed to mitigate systemic risk while delivering predictable, production-grade results.
             </p>
           </div>
         </div>
