@@ -1,32 +1,52 @@
 const TIERS = [
   {
-    type: 'ARCHITECTURE REVIEW',
-    range: '$50k – $150k',
-    duration: '6 – 10 weeks',
+    type: 'STRATEGIC AUDIT & BLUEPRINT',
+    range: '$150k – $350k',
+    duration: '8 – 12 weeks',
     featured: false,
-    includes: ['C4 context + container diagrams', 'ADR library (10–20 records)', 'Risk register', 'Component contracts', 'One revision cycle', 'Handover briefing'],
+    includes: [
+      'Comprehensive C4 Model (Context, Container, Component)',
+      'Immutable ADR Library (Architecture Decision Records)',
+      'Systemic Risk Register & Mitigation Strategy',
+      'API Contract Design & Domain Modeling',
+      'Infrastructure-as-Code (IaC) foundational patterns',
+      'Executive Handover & Technical Roadmap',
+    ],
   },
   {
-    type: 'SYSTEM BUILD',
-    range: '$150k – $900k',
-    duration: '14 – 26 weeks',
+    type: 'PRINCIPAL-LED BUILD',
+    range: '$350k – $2.5M+',
+    duration: '24 – 52 weeks',
     featured: true,
-    includes: ['Full architecture phase', 'Implementation (front-end, back-end, infra)', 'CI/CD pipeline', 'Observability stack (logs, traces, metrics)', 'Handover + team training', 'Advisory retainer option'],
+    includes: [
+      'Full Strategic Audit & Blueprint phase',
+      'End-to-end implementation (Core Engines, APIs, UI)',
+      'Enterprise-grade CI/CD & Security hardening',
+      'Full-stack Observability (Traces, Metrics, Logs)',
+      'Zero-downtime deployment orchestration',
+      'Strategic advisory during post-launch scaling',
+    ],
   },
   {
-    type: 'ADVISORY RETAINER',
-    range: '$8k – $20k / mo',
-    duration: 'Ongoing',
+    type: 'FRACTIONAL PRINCIPAL ADVISORY',
+    range: '$15k – $40k / mo',
+    duration: '6mo Minimum',
     featured: false,
-    includes: ['Monthly architecture review (2h)', 'ADR review + approvals', 'Async Q&A — 48h SLA', 'Code review (sample basis)', 'Available to post-engagement clients only'],
+    includes: [
+      'Direct access to a Principal Engineer',
+      'Architectural review & ADR governance',
+      'Strategic technology roadmap oversight',
+      'Critical code review & performance auditing',
+      'Available to established enterprise clients only',
+    ],
   },
 ];
 
 const COST_FACTORS = [
-  ['01', 'Integration complexity', 'Systems touching more than three external APIs, legacy ERPs, or real-time data streams require additional architecture and testing scope.'],
-  ['02', 'Timeline compression', 'Sub-12-week builds for scopes over $200k require dedicated principal allocation and carry a 20% expedite fee.'],
-  ['03', 'Compliance requirements', 'HIPAA, PCI-DSS, SOC 2 Type II, or FCA-regulated environments require additional documentation, threat modeling, and review cycles.'],
-  ['04', 'Geographic distribution', 'Multi-region deployments with sub-100ms SLO targets across more than three regions add infrastructure architecture scope.'],
+  ['01', 'Architectural Complexity', 'High-concurrency systems, distributed state management, and multi-region synchronization require deeper architectural modeling and extensive stress-testing.'],
+  ['02', 'Strategic Urgency', 'Expedited timelines for mission-critical builds requiring immediate principal resource allocation carry a 25% premium and strictly defined scoping constraints.'],
+  ['03', 'Regulatory & Compliance Rigor', 'Environments subject to HIPAA, PCI-DSS Level 1, or SOC 2 Type II require exhaustive threat modeling, immutable logging, and formal audit documentation.'],
+  ['04', 'Legacy Drift Mitigation', 'Modernizing highly-entangled legacy monoliths with zero-downtime requirements adds significant complexity to the migration strategy and validation phase.'],
 ];
 
 const SCOPING_STEPS = [
@@ -55,16 +75,16 @@ const InvestmentHero = () => {
         </div>
         <div className="eyebrow" style={{ marginBottom: 24 }}>Pricing</div>
         <h1 className="display h1" style={{ marginBottom: 24 }}>
-          Transparent<br />
-          by design<span style={{ color: 'var(--cobalt)' }}>.</span>
+          Predictable<br />
+          Capital Allocation<span style={{ color: 'var(--cobalt)' }}>.</span>
         </h1>
         <p style={{ maxWidth: 600, fontSize: isMobile ? 16 : 19, color: 'var(--titanium-2)', lineHeight: 1.6, marginBottom: 40 }}>
-          Most firms obscure how engagements are scoped and what drives the final number.
-          Here is exactly what determines scope — and how we get from brief to proposal in three steps.
+          Most firms obscure the financial variables of high-stakes engineering. 
+          We prioritize absolute transparency, ensuring that every engagement is scoped to mitigate technical risk and maximize commercial impact.
         </p>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
           <a href="index.html#contact" className="btn btn-primary" style={{ fontSize: 12 }}>
-            Commission a build <span className="arrow">→</span>
+            Initiate strategic review <span className="arrow">→</span>
           </a>
           <a href="https://cal.com/kyobix" target="_blank" rel="noopener noreferrer" className="btn" style={{ fontSize: 12 }}>
             Book scoping call <span className="arrow">→</span>
