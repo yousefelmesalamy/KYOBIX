@@ -117,7 +117,7 @@ const App = () => {
           boxShadow: '0 0 24px var(--cobalt-glow)',
           animation: 'page-in 300ms ease both',
         }}>
-          Schedule Technical Audit <span className="arrow">→</span>
+          Initiate Strategic Review <span className="arrow">→</span>
         </a>
       )}
     </window.BreakpointContext.Provider>
