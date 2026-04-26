@@ -1,27 +1,27 @@
 const ARTICLES = [
   {
-    slug: 'adr-workflow',
-    title: 'How we run ADR reviews at Kyobix',
+    slug: 'architectural-sovereignty',
+    title: 'Architectural Sovereignty: The ADR Discipline',
     date: '2026-03-18',
     tag: 'PROCESS',
-    readTime: '7 min',
-    excerpt: 'Every architecture decision we make is documented in an Architecture Decision Record before a single line of implementation code is written. Here\'s our exact format, our review process, and why the discipline matters more than the document.',
+    readTime: '9 min',
+    excerpt: 'Code is ephemeral; architecture is foundational. We detail why every strategic decision must be captured in an immutable ADR library before implementation, and how this prevents architectural drift in high-growth environments.',
   },
   {
-    slug: 'six-engagements',
-    title: 'Why we cap at six engagements per year',
+    slug: 'economic-rigor',
+    title: 'Economic Rigor: Why we cap at six engagements per year',
     date: '2026-02-04',
     tag: 'OPERATIONS',
-    readTime: '5 min',
-    excerpt: 'The question we get asked most often by prospective clients: why won\'t you just take on more work? The answer is boring and true — quality and throughput are inversely related above a threshold, and we know exactly where that threshold is.',
+    readTime: '6 min',
+    excerpt: 'The consulting industry is plagued by a volume-first mindset that dilutes senior expertise. We explain the mathematical necessity of our six-engagement ceiling and why direct Principal ownership is the only way to mitigate catastrophic technical risk.',
   },
   {
-    slug: 'angular-vs-react-2026',
-    title: 'Angular vs React for enterprise SaaS in 2026',
+    slug: 'legacy-transformation-framework',
+    title: 'Modernizing the Monolith: A Zero-Risk Framework',
     date: '2026-01-12',
     tag: 'ENGINEERING',
-    readTime: '11 min',
-    excerpt: 'Not a framework war. A structured comparison of how each choice affects architecture decisions, team scaling, long-term maintenance, and the kind of system boundary problems that appear 18 months into production.',
+    readTime: '12 min',
+    excerpt: 'Strategic modernization is not a rewrite—it is a surgical extraction. We share our framework for incremental legacy transformation that preserves revenue integrity while enabling systemic agility.',
   },
 ];
 
@@ -42,12 +42,12 @@ const EngineeringLogHero = () => {
         </div>
         <div className="eyebrow" style={{ marginBottom: 24 }}>Engineering Log</div>
         <h1 className="display h1" style={{ marginBottom: 24 }}>
-          How we think<br />
-          <span style={{ color: 'var(--titanium-2)' }}>about systems.</span>
+          Systemic<br />
+          <span style={{ color: 'var(--titanium-2)' }}>Integrity.</span>
         </h1>
         <p style={{ maxWidth: 580, fontSize: isMobile ? 16 : 19, color: 'var(--titanium-2)', lineHeight: 1.6, paddingBottom: isMobile ? 40 : 64 }}>
-          Architecture decisions, process notes, and engineering opinions from the Kyobix principals.
-          Published when we have something worth saying.
+          Architectural insights, operational post-mortems, and engineering perspectives from the Kyobix principals. 
+          We share our findings only when they offer a distinct strategic advantage.
         </p>
       </div>
     </section>
