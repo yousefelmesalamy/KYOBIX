@@ -1,35 +1,35 @@
 const PROFILES = [
   {
-    title: 'Scaling Startups',
-    stage: 'Series A – C',
-    desc: 'You have product-market fit, but your technical debt is starting to throttle your growth. We help you scale without the drift.',
+    title: 'Hyper-growth Platforms',
+    stage: 'Series B — IPO',
+    desc: 'You have aggressive market traction, but your architecture is becoming a bottleneck. We stabilize your core systems to support 100x user growth without the risk of systemic collapse.',
     points: [
-      'Establishing Architecture Decision Records (ADRs)',
-      'Refactoring core engines for 10x load',
-      'Implementing automated CI/CD and observability',
-      'Principal-level mentorship for your growing team',
+      'Transitioning from MVP monoliths to distributed architectures',
+      'Implementing precision observability and auto-recovery',
+      'Establishing Architectural Governance and ADRs',
+      'Principal-led mentoring for your internal engineering leads',
     ],
   },
   {
-    title: 'Established Enterprise',
-    stage: 'Legacy Modernization',
-    desc: 'Slow release cycles and fragmented data silos are hindering your agility. We modernize your core without interrupting operations.',
+    title: 'Strategic Enterprise',
+    stage: 'Systemic Transformation',
+    desc: 'Legacy systems and fragmented data silos are threatening your competitive edge. We modernize mission-critical pipelines without interrupting the revenue stream.',
     points: [
-      'Incremental migration from monolith to services',
-      'Unifying fragmented data into real-time dashboards',
-      'Hardening security and compliance posture',
-      'Sub-second performance optimization for global users',
+      'Incremental, zero-downtime legacy modernization',
+      'Unifying disparate data silos into high-fidelity streams',
+      'Hardening security posture for global regulatory compliance',
+      'Sub-second latency optimization for cross-regional traffic',
     ],
   },
   {
-    title: 'Mission-Critical Ops',
-    stage: 'High-Volume Systems',
-    desc: 'You manage real-time logistics, fintech flows, or global retail. You need systems that are bulletproof and exceptionally fast.',
+    title: 'High-Stakes Operations',
+    stage: 'Mission-Critical Infrastructure',
+    desc: 'You manage real-time logistics, fintech ecosystems, or high-volume retail. You need systems that are mathematically reliable and exceptionally fast.',
     points: [
-      'Low-latency data processing and telemetry',
-      'High-availability infrastructure (99.99%+)',
-      'Bespoke commerce and inventory logic',
-      'Custom middleware for complex integrations',
+      'Engineered resilience for 99.999% availability targets',
+      'High-throughput transaction and inventory engines',
+      'Bespoke commerce logic and middleware orchestration',
+      'Auditing and mitigating catastrophic technical risk',
     ],
   },
 ];
@@ -49,8 +49,8 @@ const WhoWeWorkWith = () => {
               work with.
             </h2>
             <p style={{ maxWidth: 540, fontSize: 17, color: 'var(--titanium-2)' }}>
-              We specialize in complex technical problems where the cost of failure is high. 
-              We are most effective when partnering with organizations in these three states.
+              We specialize in engineering solutions for high-stakes environments where the cost of failure is measured in millions. 
+              We are a high-conviction firm, selectively partnering with organizations facing these critical transitions.
             </p>
           </div>
         </div>

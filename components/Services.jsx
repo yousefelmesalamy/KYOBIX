@@ -2,31 +2,31 @@ const SERVICES = [
   {
     id: '01',
     title: 'High-Performance UI',
-    desc: 'We architect atomic design systems and sub-second rendering for complex, data-heavy web applications. We eliminate technical debt at the UI layer to ensure your frontend scales with your business.',
+    desc: 'We architect atomic design systems and sub-second rendering for complex, data-heavy web applications. We eliminate technical debt at the UI layer to ensure your frontend is a scalable asset, not a liability.',
     tags: ['Atomic Design', 'Performance', 'Real-time', 'Data-heavy', 'Mobile-ready'],
   },
   {
     id: '02',
-    title: 'Distributed Systems',
-    desc: 'Building bulletproof, multi-tenant cloud architectures designed for high-concurrency and mission-critical reliability. We engineer the core engines that power global $100M+ operations.',
+    title: 'Mission-Critical Backend',
+    desc: 'Building bulletproof, multi-tenant cloud architectures designed for high-concurrency and extreme reliability. We engineer the core engines that power global $100M+ operations with zero downtime tolerance.',
     tags: ['Multi-tenant', 'Scalability', 'Security', 'Cloud-Native', 'Resilience'],
   },
   {
     id: '03',
     title: 'Ecosystem Orchestration',
-    desc: 'Unifying fragmented technical stacks through robust middleware and custom API bridges. We enable real-time data synchronization across your mission-critical technical ecosystem.',
+    desc: 'Unifying fragmented technical stacks through robust middleware and custom API bridges. We enable seamless data flow across your mission-critical technical ecosystem, eliminating silos and latency.',
     tags: ['API Design', 'Data Sync', 'Legacy Integration', 'Automation', 'Migrations'],
   },
   {
     id: '04',
-    title: 'Headless Commerce',
-    desc: 'High-volume retail engines engineered for global performance, bespoke inventory logic, and checkout flows. Optimized for extreme scale during peak global demand.',
+    title: 'Enterprise Commerce',
+    desc: 'High-volume retail engines engineered for global performance, bespoke inventory logic, and checkout flows. Optimized for extreme scale and $1M+ daily transaction volume.',
     tags: ['Checkout', 'Inventory', 'Global Search', 'Payments', 'Performance'],
   },
   {
     id: '05',
-    title: 'Architecture Audits',
-    desc: 'Deep-dive technical risk assessments and incremental modernization strategies. We provide the blueprint for long-term system health and successful technical asset transfer.',
+    title: 'Architecture Strategy',
+    desc: 'Deep-dive technical risk assessments and incremental modernization roadmaps. We provide the blueprint for long-term system health, ensuring successful technical asset transfer and investment protection.',
     tags: ['ADRs', 'Roadmaps', 'Risk Analysis', 'Documentation', 'Handover'],
   },
 ];
@@ -44,11 +44,11 @@ const Services = () => {
           </div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
-              What we build<span style={{ color: 'var(--titanium-2)' }}>.</span>
+              Engineering as a<br />Competitive Advantage<span style={{ color: 'var(--cobalt)' }}>.</span>
             </h2>
             <p style={{ maxWidth: 620, fontSize: 17, color: 'var(--titanium-2)' }}>
-              Five areas of focus. Each one delivers working software
-              that solves a specific business problem.
+              We don't just write code; we architect systems that eliminate operational risk 
+              and unlock scalable revenue. Every engagement is led by a Principal Engineer.
             </p>
           </div>
         </div>

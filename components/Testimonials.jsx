@@ -1,20 +1,20 @@
 const TESTIMONIALS = [
   {
-    quote: "Kyobix delivered the full architecture review and ADR suite in week one. We were able to start development with total clarity, and zero changes were needed at handover. That level of precision is rare.",
-    name: "VP Engineering",
-    org: "Series B Fintech · Seoul",
+    quote: "Kyobix delivered the full architecture review and ADR suite in week one. We were able to start development with total clarity, and zero changes were needed at handover. That level of precision is rare in high-stakes engineering.",
+    name: "Director of Engineering",
+    org: "Global Fintech · Seoul Hub",
     init: "JK",
   },
   {
-    quote: "The documentation library they built alone saved us six months of onboarding friction when we tripled the team. It's now the foundational reference for every sprint we plan.",
-    name: "CTO",
-    org: "Logistics Platform · Berlin",
+    quote: "The documentation library they built alone saved us six months of onboarding friction when we tripled the team. It is now the foundational reference for every sprint. They understand scale better than any partner we've hired.",
+    name: "Chief Technology Officer",
+    org: "Logistics Infrastructure · Berlin",
     init: "MR",
   },
   {
-    quote: "Our global LCP dropped from 4.2s to 0.9s within weeks of their headless commerce rollout. The commerce team hadn't seen performance numbers like that from any previous agency.",
-    name: "Head of Digital",
-    org: "Luxury Retail · Paris",
+    quote: "Our global LCP dropped from 4.2s to 0.9s within weeks. The commerce team hadn't seen performance numbers like that from any previous agency. They handle complex headless migrations with total surgical precision.",
+    name: "VP Digital Commerce",
+    org: "Luxury Group · Paris",
     init: "CF",
   },
 ];

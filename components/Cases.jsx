@@ -71,8 +71,6 @@ const CaseStudies = () => {
           gridTemplateColumns: isMobile ? '1fr' : isTablet ? '1fr 1.2fr' : '1fr 1fr',
           gap: isMobile ? 24 : 48,
           paddingBottom: 40,
-          borderBottom: '1px solid var(--line-2)',
-          marginBottom: 40,
         }}>
           <div>
             <div className="mono" style={{ marginBottom: 14, color: 'var(--cobalt)' }}>
@@ -86,9 +84,20 @@ const CaseStudies = () => {
             </div>
           </div>
           <div>
-            <p style={{ fontSize: 16, color: 'var(--titanium-2)', marginBottom: 24, maxWidth: 520 }}>
-              {c.summary}
-            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 24 }}>
+              <div>
+                <div className="mono" style={{ fontSize: 10, color: 'var(--titanium-3)', marginBottom: 8 }}>THE CHALLENGE</div>
+                <p style={{ fontSize: 14, color: 'var(--titanium-2)', lineHeight: 1.5 }}>
+                  {c.summary.split('. ')[0]}.
+                </p>
+              </div>
+              <div>
+                <div className="mono" style={{ fontSize: 10, color: 'var(--titanium-3)', marginBottom: 8 }}>THE OUTCOME</div>
+                <p style={{ fontSize: 14, color: 'var(--titanium-hi)', lineHeight: 1.5 }}>
+                  {c.summary.split('. ')[1]}.
+                </p>
+              </div>
+            </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
               {c.stack.map(s => (
                 <span key={s} className="mono" style={{

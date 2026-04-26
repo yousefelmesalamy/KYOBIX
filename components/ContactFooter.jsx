@@ -132,11 +132,11 @@ const Contact = () => {
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
               Request an<br />
-              intake review<span style={{ color: 'var(--titanium-2)' }}>.</span>
+              intake review<span style={{ color: 'var(--cobalt)' }}>.</span>
             </h2>
             <p style={{ maxWidth: 560, fontSize: 17, color: 'var(--titanium-2)' }}>
-              Describe your architecture challenges. A senior principal will review your 
-              brief and reply within two business days.
+              Describe your architecture challenges. Every submission is reviewed by a 
+              Principal Engineer. We reply to high-intent inquiries within two business days.
             </p>
           </div>
         </div>
@@ -251,7 +251,7 @@ const Contact = () => {
               <Select label="TIMELINE" value={form.timeline} onChange={update('timeline')}
                 options={['Q3 2026','Q4 2026','Q1 2027','Exploratory']} />
               <Select label="INVESTMENT RANGE" value={form.budget} onChange={update('budget')}
-                options={['$50k–$150k','$150k–$400k','$400k–$900k','$900k+','Advisory retainer']} />
+                options={['$150k–$400k','$400k–$900k','$900k–$2.5M+','Advisory retainer']} />
               <Field label="PREFERRED CONTACT" value={form.contact} onChange={update('contact')} placeholder="name@company.com" />
             </div>
 

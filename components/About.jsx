@@ -60,27 +60,27 @@ const ABOUT_METRICS = [
 const ABOUT_PRINCIPLES = [
   {
     id: '01',
-    title: 'Architecture before implementation',
+    title: 'Architecture as the Single Source of Truth',
     short: 'We write the C4 model before the first line of application code.',
-    detail: 'Every system starts with a documented architecture review: context diagram, container map, component contracts, and a risk register. Decisions are captured in ADRs. The codebase inherits the architecture; the architecture does not emerge from the codebase.',
+    detail: 'Every system begins with an exhaustive architecture review: context diagrams, container maps, component contracts, and a formal risk register. Decisions are immutable ADRs. The codebase is a reflection of the architecture, never its source.',
   },
   {
     id: '02',
-    title: 'Observable by default',
-    short: 'Observability is not a Phase 4 retrofit — it ships with the first commit.',
-    detail: 'Structured logging, distributed tracing, and SLO definitions are first-class requirements on every engagement. We hand over a system where you can answer "what is broken and why" without a 2am call to us.',
+    title: 'Inherent Observability',
+    short: 'Observability is a core deliverable, not a post-launch telemetry patch.',
+    detail: 'Structured logging, distributed tracing, and precision SLO definitions are integrated into the initial commit. We deliver self-healing systems with comprehensive visibility, eliminating the need for tribal knowledge during a production incident.',
   },
   {
     id: '03',
-    title: 'Constrained engagement model',
-    short: 'Six engagements per year. Each led by a principal from scoping through handover.',
-    detail: 'We refuse the growth trap of hiring juniors to absorb additional contracts. The six-engagement ceiling exists because quality and throughput are inverse beyond a threshold. You speak to the engineer building your system — not an account manager explaining why they\'re busy.',
+    title: 'The Principal Constraint',
+    short: 'Six engagements per year. Every line reviewed by a Principal Engineer.',
+    detail: 'We reject the scale-at-all-costs model. Our six-engagement limit ensures that every client receives direct access to the firm\'s leadership. No juniors, no account managers, and zero dilution of quality for the sake of headcount.',
   },
   {
     id: '04',
-    title: 'Boundary ownership',
-    short: 'We own the exact gap between business logic and the system — completely.',
-    detail: 'The recurring failure mode in enterprise software is what accumulates in the gap between what the business requires and what the system actually does. We are specialists in precisely that gap: domain modeling, API contract design, and integration architecture.',
+    title: 'Domain Integrity',
+    short: 'We own the complex logic gap between business requirements and system behavior.',
+    detail: 'The primary failure mode in enterprise software is the accumulation of legacy complexity in the gap between intent and implementation. We specialize in domain modeling and API design that preserves business intent over decades of system evolution.',
   },
 ];
 

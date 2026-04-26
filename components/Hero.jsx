@@ -83,20 +83,30 @@ const Hero = () => {
               fontSize: isMobile ? 16 : 18,
               lineHeight: 1.5,
               color: 'var(--titanium-2)',
-              maxWidth: 520,
+              maxWidth: 560,
               marginBottom: 40,
             }}>
               We architect and build high-performance infrastructure for organizations where 
-              system failure is not an option. Principal-only execution for 
+              system failure is a catastrophic business risk. Principal-only execution for 
               mission-critical scale and strategic legacy modernization.
             </p>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 48 }}>
               <a href="https://cal.com/kyobix/30min?overlayCalendar=true" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                 Schedule a Technical Audit <span className="arrow">→</span>
               </a>
               <a href="#work" className="btn">
                 View industrial casework
               </a>
+            </div>
+
+            {/* Authority / Trusted By */}
+            <div style={{ borderTop: '1px solid var(--line-2)', paddingTop: 24, opacity: 0.8 }}>
+              <div className="mono" style={{ fontSize: 9, color: 'var(--titanium-3)', marginBottom: 12, letterSpacing: '0.1em' }}>TRUSTED BY ENGINEERING LEADERS AT</div>
+              <div style={{ display: 'flex', gap: isMobile ? 16 : 32, flexWrap: 'wrap', alignItems: 'center' }}>
+                {['SERIES B FINTECH', 'GLOBAL LOGISTICS', 'LUXURY RETAIL', 'ENTERPRISE SAAS'].map(v => (
+                  <span key={v} className="mono" style={{ fontSize: 10, color: 'var(--titanium-hi)', opacity: 0.6 }}>{v}</span>
+                ))}
+              </div>
             </div>
           </div>
 

@@ -1,31 +1,31 @@
 const FAQS = [
   {
     q: "Who owns the IP?",
-    a: "You do. All code, documents, and assets are yours at handover. No licenses, no ongoing claims. This is in every contract.",
+    a: "You do. Full ownership of all code, architecture documents, and assets is transferred to you at handover. We retain no licenses or ongoing claims. This is a non-negotiable standard in our contracts.",
   },
   {
-    q: "Do you subcontract?",
-    a: "Never. The engineer you meet is the one who builds your system. No offshore teams, no freelancers. Non-negotiable.",
+    q: "Do you use junior developers?",
+    a: "No. Every line of code and every architectural decision is made by a Principal-level engineer. We do not use offshore teams, juniors, or temporary freelancers. You are hiring expertise, not headcount.",
   },
   {
-    q: "How do you handle NDAs?",
-    a: "We sign yours before any scoping conversation. Mutual NDAs are our default. Legal review typically takes two business days.",
+    q: "How do you handle confidentiality?",
+    a: "We sign your NDA before any deep-dive scoping. As we often handle core business logic and trade secrets, security and confidentiality are baked into our operational process.",
   },
   {
     q: "What happens after delivery?",
-    a: "Your team owns the system fully. We offer an optional advisory retainer if you want ongoing access to our team for questions or future planning.",
+    a: "Our goal is for your team to be entirely self-sufficient. We provide a complete handover library. If you require ongoing strategic guidance, we offer a principal-level advisory retainer.",
   },
   {
-    q: "Can you work in our timezone?",
-    a: "We have engineers in New York, London, Berlin, Madrid, Seoul, and Tokyo. We cover every major business timezone.",
+    q: "Can you work within our stack?",
+    a: "We are technology-agnostic but performance-obsessed. While we have deep expertise in modern ecosystems, our primary focus is on the underlying architecture and business logic that drives results.",
   },
   {
-    q: "How long does a typical project take?",
-    a: "Strategy and architecture reviews typically take 6–10 weeks. Full system engineering and deployment ranges from 14–26 weeks depending on the complexity of the core engines.",
+    q: "What is your typical project timeline?",
+    a: "Architecture strategy and risk reviews take 6–10 weeks. Full-scale engineering of core systems typically ranges from 4 to 6 months. We do not rush critical infrastructure.",
   },
   {
     q: "What is your engagement model?",
-    a: "We work on fixed-scope deliverables for specific engineering assets and architecture reviews. For long-term partnerships, we offer a principal-level advisory retainer. We do not provide hourly staff augmentation.",
+    a: "We work on a fixed-fee basis for defined engineering deliverables or a recurring monthly retainer for advisory. We do not provide hourly staff augmentation or general 'body shopping.'",
   },
 ];
 
