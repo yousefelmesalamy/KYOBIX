@@ -1,20 +1,20 @@
 const TESTIMONIALS = [
   {
-    quote: "Kyobix delivered the architecture review in week one and we changed nothing at handover. That's never happened before with any vendor.",
-    name: "VP Engineering",
-    org: "Series B Fintech · Seoul",
+    quote: "Kyobix delivered the full architecture review and ADR suite in week one. We were able to start development with total clarity, and zero changes were needed at handover. That level of precision is rare in high-stakes engineering.",
+    name: "Director of Engineering",
+    org: "Global Fintech · Seoul Hub",
     init: "JK",
   },
   {
-    quote: "The ADR library alone saved us six months of onboarding when we tripled the team. We still reference it in every sprint planning.",
-    name: "CTO",
-    org: "Logistics Platform · Berlin",
+    quote: "The documentation library they built alone saved us six months of onboarding friction when we tripled the team. It is now the foundational reference for every sprint. They understand scale better than any partner we've hired.",
+    name: "Chief Technology Officer",
+    org: "Logistics Infrastructure · Berlin",
     init: "MR",
   },
   {
-    quote: "LCP went from 4.2s to 0.9s globally. The commerce team hadn't seen numbers like that from any agency, ever.",
-    name: "Head of Digital",
-    org: "Luxury Retail · Paris",
+    quote: "Our global LCP dropped from 4.2s to 0.9s within weeks. The commerce team hadn't seen performance numbers like that from any previous agency. They handle complex headless migrations with total surgical precision.",
+    name: "VP Digital Commerce",
+    org: "Luxury Group · Paris",
     init: "CF",
   },
 ];
@@ -27,13 +27,13 @@ const Testimonials = () => {
     <section className="section" style={{ borderTop: '1px solid var(--line)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 05 / SIGNAL</div>
+          <div className="eyebrow">TESTIMONIALS</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
-              Client voice.
+              What clients say.
             </h2>
             <p style={{ maxWidth: 520, fontSize: 17, color: 'var(--titanium-2)' }}>
-              Three of the teams who have shipped with us.
+              From teams who shipped with us.
             </p>
           </div>
         </div>

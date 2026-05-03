@@ -1,43 +1,43 @@
 const PROCESS_PHASES = [
   {
     id: '00',
-    name: 'DISCOVERY',
-    label: 'Blueprint',
-    duration: '1–2 WKS',
-    output: 'System diagram, RFCs, risk register',
-    desc: 'We interrogate the problem before proposing a solution. Stakeholder interviews, constraint mapping, architectural decision records.',
+    name: 'STRATEGIC AUDIT',
+    label: 'Root Cause Analysis',
+    duration: '2 WKS',
+    output: 'Systemic Risk Register & Architecture Roadmap',
+    desc: 'We perform an exhaustive audit of your current infrastructure, identifying the architectural bottlenecks that threaten your scalability. We define the high-stakes requirements that map to your commercial objectives.',
   },
   {
     id: '01',
-    name: 'ARCHITECTURE',
-    label: 'Design',
-    duration: '2–4 WKS',
-    output: 'C4 model, API contracts, data schema',
-    desc: 'Formal system design documented at four levels: context, container, component, code. Every edge case named before a line is written.',
+    name: 'SPECIFICATION',
+    label: 'Architectural Blueprint',
+    duration: '4 WKS',
+    output: 'Complete ADR Library & System Contracts',
+    desc: 'We architect the entire solution before a single line of application code is written. Every major technical decision is documented as an ADR, ensuring total transparency and long-term maintainability.',
   },
   {
     id: '02',
-    name: 'CONSTRUCTION',
-    label: 'Build',
-    duration: '8–20 WKS',
-    output: 'Working system, full test coverage',
-    desc: 'Iterative delivery in two-week cycles. Continuous integration, automated testing, weekly architecture reviews with your team.',
+    name: 'IMPLEMENTATION',
+    label: 'Principal Engineering',
+    duration: '12–24 WKS',
+    output: 'Production-Grade Software Assets',
+    desc: 'Led by a Principal Engineer, we build your core engines with a focus on modularity and high performance. We utilize contract-first development to ensure the implementation mirrors the architectural intent exactly.',
   },
   {
     id: '03',
     name: 'HARDENING',
-    label: 'Scale',
-    duration: '2–3 WKS',
-    output: 'Performance baseline, runbooks',
-    desc: 'Load testing, observability wiring, disaster recovery. We hand over a system that withstands Black Friday on day one.',
+    label: 'Operational Resilience',
+    duration: '4 WKS',
+    output: 'Precision Observability & Fail-safe Suite',
+    desc: 'We subject the system to rigorous stress tests and harden its observability. We ensure your infrastructure is self-healing and can maintain performance targets under catastrophic load conditions.',
   },
   {
     id: '04',
-    name: 'HANDOVER',
-    label: 'Transition',
+    name: 'ADVISORY',
+    label: 'Asset Handover',
     duration: 'ONGOING',
-    output: 'Documentation, team training',
-    desc: 'Your team owns the system when we leave. Retained advisory available — we prefer it that way. Clean boundaries.',
+    output: 'Documented Transition & Strategic Advisory',
+    desc: 'We execute a complete ownership transfer of all code and documentation to your internal team. We remain available as fractional principal advisors to ensure the system evolves with your business strategy.',
   },
 ];
 
@@ -49,15 +49,15 @@ const Process = () => {
     <section id="process" className="section" style={{ background: 'var(--graphite)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 02 / METHOD</div>
+          <div className="eyebrow">HOW WE WORK</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
-              A five-phase<br />
-              engagement model.
+              How every<br />
+              project works.
             </h2>
             <p style={{ maxWidth: 620, fontSize: 17, color: 'var(--titanium-2)' }}>
-              Predictable timelines. Documented decisions. No surprises at the
-              30% mark, no surprises at the 90% mark.
+              We eliminate the uncertainty of high-stakes engineering through a clinical, five-phase framework. 
+              Our process is designed to mitigate systemic risk while delivering predictable, production-grade results.
             </p>
           </div>
         </div>

@@ -1,27 +1,31 @@
 const FAQS = [
   {
     q: "Who owns the IP?",
-    a: "You own everything. All code, architecture documents, ADRs, and design assets transfer to you at handover. We retain no rights, no licenses, no ongoing claims. This is written into every MSA before work begins.",
+    a: "You do. Full ownership of all code, architecture documents, and assets is transferred to you at handover. We retain no licenses or ongoing claims. This is a non-negotiable standard in our contracts.",
   },
   {
-    q: "Do you subcontract?",
-    a: "Never. Every principal listed on the About page is the person who will build your system. No offshore resourcing, no white-labelling, no staffing augmentation. This is non-negotiable and documented in every contract.",
+    q: "Do you use junior developers?",
+    a: "No. Every line of code and every architectural decision is made by a Principal-level engineer. We do not use offshore teams, juniors, or temporary freelancers. You are hiring expertise, not headcount.",
   },
   {
-    q: "How do you handle NDAs?",
-    a: "We sign your NDA before any scoping conversation. Mutual NDAs are our default. We can work under your standard vendor agreement — legal review typically takes two business days.",
+    q: "How do you handle confidentiality?",
+    a: "We sign your NDA before any deep-dive scoping. As we often handle core business logic and trade secrets, security and confidentiality are baked into our operational process.",
   },
   {
-    q: "What does post-delivery look like?",
-    a: "We offer a standing advisory retainer for post-engagement clients — six slots, currently two available. If your goal is for your team to own the system without any key-person risk on our side, we design the handover for exactly that outcome.",
+    q: "What happens after delivery?",
+    a: "Our goal is for your team to be entirely self-sufficient. We provide a complete handover library. If you require ongoing strategic guidance, we offer a principal-level advisory retainer.",
   },
   {
-    q: "Can you work in our timezone?",
-    a: "We have principals in UTC−4 (New York), UTC+0 (London), UTC+1 (Berlin, Madrid), and UTC+9 (Seoul, Tokyo). Meaningful overlap with any working timezone on the planet is guaranteed.",
+    q: "Can you work within our stack?",
+    a: "We are technology-agnostic but performance-obsessed. While we have deep expertise in modern ecosystems, our primary focus is on the underlying architecture and business logic that drives results.",
   },
   {
-    q: "What's a typical engagement timeline?",
-    a: "Architecture review only: 6–10 weeks. Full system build: 14–26 weeks depending on scope. We do not take on retainer-only engagements for new clients — we need to build together first.",
+    q: "What is your typical project timeline?",
+    a: "Architecture strategy and risk reviews take 6–10 weeks. Full-scale engineering of core systems typically ranges from 4 to 6 months. We do not rush critical infrastructure.",
+  },
+  {
+    q: "What is your engagement model?",
+    a: "We work on a fixed-fee basis for defined engineering deliverables or a recurring monthly retainer for advisory. We do not provide hourly staff augmentation or general 'body shopping.'",
   },
 ];
 
@@ -104,13 +108,13 @@ const FAQ = () => {
     <section className="section" style={{ borderTop: '1px solid var(--line)' }}>
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow">§ 08 / FAQ</div>
+          <div className="eyebrow">FAQ</div>
           <div>
             <h2 className="display h2" style={{ marginBottom: 20 }}>
               Common questions.
             </h2>
             <p style={{ maxWidth: 520, fontSize: 17, color: 'var(--titanium-2)' }}>
-              What enterprise procurement asks before every engagement.
+              Questions we hear most from teams evaluating us.
             </p>
           </div>
         </div>
